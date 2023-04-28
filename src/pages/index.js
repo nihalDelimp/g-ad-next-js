@@ -1,9 +1,9 @@
-import GoogleAd from './googleAd'
+import GoogleAdPreview from './GoogleAdPreview'
 
 export default function Home() {
   return (
     <>
-      <GoogleAd />
+      <GoogleAdPreview />
     </>
   )
 }

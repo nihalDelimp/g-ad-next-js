@@ -446,7 +446,7 @@ html, body {
 .mobile-sec {
   margin: 0 auto;
   /* background: red; */
-  background: url(../assets/phone.png);
+  background: url(/phone.png);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: top;
