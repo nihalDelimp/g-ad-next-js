@@ -30,20 +30,6 @@ function GoogleAdPreview() {
     const maxPhoneLimit = 15
     const maxSnippetsItemLimit = 25
 
-
-
-    useEffect(() => {
-        $(document).ready(function () {
-            $(document).on("click", ".tab--item > label", function () {
-                $(this).parent().next(".tab--content").toggleClass("active");
-            });
-            $(document).on("click", ".tab--item--inner > label", function () {
-                $(".ds--input").toggleClass("active");
-            });
-        });
-
-    }, [])
-
     const handleChangeHeadLine = (i, event) => {
         const { value } = event.target
         let newInputValues = [...headlineForm];
