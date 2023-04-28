@@ -36,151 +36,151 @@ function GoogleAdd() {
                     });
                 }}
             />
-            <section className="form--area">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-12 col-md-6 pr--45">
-                            <div className="search--form--left">
+            <section class="form--area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-6 pr--45">
+                            <div class="search--form--left">
                                 <form action="/action_page.php">
-                                    <div className="input-group mb-3">
-                                        <span className="input-group-text">Final URL</span>
-                                        <input type="search" className="form-control" placeholder="Search" name="usrname" />
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Final URL</span>
+                                        <input type="search" class="form-control" placeholder="Search" name="usrname" />
                                     </div>
                                 </form>
                             </div>
-                            <div className="headline--box mb-3">
-                                <h3 className="title--sm mb-3">Headlines</h3>
-                                <div className="headline--inputs">
+                            <div class="headline--box mb-3">
+                                <h3 class="title--sm mb-3">Headlines</h3>
+                                <div class="headline--inputs">
                                     {headlineForm.map((item, i) =>
-                                        <div className="input-group mb-2">
-                                            <span className="input-group-text">Headline {i + 1}</span>
-                                            <input type="text" className="form-control" value={item.headline} onChange={(e) => handleChangeHeadLine(i, e)} placeholder="Enter Headline" name="headline" />
-                                            {/* <span className={`input-group-text ${maxHeadLineLength - item.headline.length >= 0 ? 'alert-success' : 'alert-danger'} `}>{maxHeadLineLength - item.headline.length}</span> */}
-                                            <span className={`input-group-text ${maxHeadLineLength - item.headline.length < 0 ? 'alert-danger' : 'alert-success'}`}>{maxHeadLineLength - item.headline.length}</span>
+                                        <div class="input-group mb-2" key={i}>
+                                            <span class="input-group-text">Headline {i + 1}</span>
+                                            <input type="text" class="form-control" value={item.headline} onChange={(e) => handleChangeHeadLine(i, e)} placeholder="Enter Headline" name="headline" />
+                                            {/* <span class={`input-group-text ${maxHeadLineLength - item.headline.length >= 0 ? 'alert-success' : 'alert-danger'} `}>{maxHeadLineLength - item.headline.length}</span> */}
+                                            <span class={`input-group-text ${maxHeadLineLength - item.headline.length < 0 ? 'alert-danger' : 'alert-success'}`}>{maxHeadLineLength - item.headline.length}</span>
 
                                         </div>
                                     )}
                                 </div>
                             </div>
-                            <div className="headline--box">
-                                <h3 className="title--sm mb-3">DESCRIPTIONS</h3>
-                                <div className="headline--inputs">
+                            <div class="headline--box">
+                                <h3 class="title--sm mb-3">DESCRIPTIONS</h3>
+                                <div class="headline--inputs">
                                     {descriptionForm.map((item, i) =>
-                                        <div className="input-group mb-2">
-                                            <span className="input-group-text">Description {i + 1}</span>
-                                            <textarea name="description" value={item.description} onChange={(e) => handleChangeDescription(i, e)} className="form-control" id="" rows="2"></textarea>
-                                            <span className={`input-group-text ${maxDescriptionLength - item.description.length >= 0 ? 'alert-success' : 'alert-danger'} `}>{maxDescriptionLength - item.description.length}</span>
+                                        <div class="input-group mb-2" key={i}>
+                                            <span class="input-group-text">Description {i + 1}</span>
+                                            <textarea name="description" value={item.description} onChange={(e) => handleChangeDescription(i, e)} class="form-control" id="" rows="2"></textarea>
+                                            <span class={`input-group-text ${maxDescriptionLength - item.description.length >= 0 ? 'alert-success' : 'alert-danger'} `}>{maxDescriptionLength - item.description.length}</span>
                                         </div>
                                     )}
                                 </div>
                             </div>
-                            <div className="checkbox--form--group mt-4">
-                                <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" className="form-check-input" id="check2" name="option2" value="something" />
-                                    <label className="form-check-label" htmlFor="check2">ADD SITELINK ASSETS</label>
+                            <div class="checkbox--form--group mt-4">
+                                <div class="form-check tab--item mb-3">
+                                    <input type="checkbox" class="form-check-input" id="check2" name="option2" value="something" />
+                                    <label class="form-check-label" htmlFor="check2">ADD SITELINK ASSETS</label>
                                 </div>
-                                <div className="tab--content">
-                                    <div className="form-check tab--item--inner mb-3 pl-60">
-                                        <input type="checkbox" className="form-check-input" id="check12" name="option12" value="something" />
-                                        <label className="form-check-label" htmlFor="check12">ADD SITELINK ASSETS</label>
+                                <div class="tab--content">
+                                    <div class="form-check tab--item--inner mb-3 pl-60">
+                                        <input type="checkbox" class="form-check-input" id="check12" name="option12" value="something" />
+                                        <label class="form-check-label" htmlFor="check12">ADD SITELINK ASSETS</label>
                                     </div>
-                                    <div className="input-group mb-2">
-                                        <span className="input-group-text">Sitelink 1</span>
-                                        <input type="text" className="form-control" placeholder="Show 2 Headlines" name="usrname" />
-                                        <span className="input-group-text alert-success">15</span>
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">Sitelink 1</span>
+                                        <input type="text" class="form-control" placeholder="Show 2 Headlines" name="usrname" />
+                                        <span class="input-group-text alert-success">15</span>
                                     </div>
-                                    <div className="input-group mb-2 ps-4 ds--input">
-                                        <span className="input-group-text">Description 1</span>
-                                        <input type="text" className="form-control" placeholder="Sitelink1 description first line" name="usrname" />
-                                        <span className="input-group-text alert-success">3</span>
+                                    <div class="input-group mb-2 ps-4 ds--input">
+                                        <span class="input-group-text">Description 1</span>
+                                        <input type="text" class="form-control" placeholder="Sitelink1 description first line" name="usrname" />
+                                        <span class="input-group-text alert-success">3</span>
                                     </div>
-                                    <div className="input-group mb-2 ps-4 ds--input">
-                                        <span className="input-group-text">Description 2</span>
-                                        <input type="text" className="form-control" placeholder="Sitelink1 description second line" name="usrname" />
-                                        <span className="input-group-text alert-success">2</span>
+                                    <div class="input-group mb-2 ps-4 ds--input">
+                                        <span class="input-group-text">Description 2</span>
+                                        <input type="text" class="form-control" placeholder="Sitelink1 description second line" name="usrname" />
+                                        <span class="input-group-text alert-success">2</span>
                                     </div>
-                                    <div className="input-group mb-2">
-                                        <span className="input-group-text">Sitelink 2</span>
-                                        <input type="text" className="form-control" placeholder="30-Character Headline" name="usrname" />
-                                        <span className="input-group-text alert-success">18</span>
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">Sitelink 2</span>
+                                        <input type="text" class="form-control" placeholder="30-Character Headline" name="usrname" />
+                                        <span class="input-group-text alert-success">18</span>
                                     </div>
-                                    <div className="input-group mb-2 ps-4 ds--input">
-                                        <span className="input-group-text ">Description 1</span>
-                                        <input type="text" className="form-control" placeholder="Sitelink2 description first line" name="usrname" />
-                                        <span className="input-group-text alert-success">3</span>
+                                    <div class="input-group mb-2 ps-4 ds--input">
+                                        <span class="input-group-text ">Description 1</span>
+                                        <input type="text" class="form-control" placeholder="Sitelink2 description first line" name="usrname" />
+                                        <span class="input-group-text alert-success">3</span>
                                     </div>
-                                    <div className="input-group mb-2 ps-4 ds--input">
-                                        <span className="input-group-text">Description 2</span>
-                                        <input type="text" className="form-control" placeholder="Sitelink2 description second line" name="usrname" />
-                                        <span className="input-group-text alert-success">2</span>
+                                    <div class="input-group mb-2 ps-4 ds--input">
+                                        <span class="input-group-text">Description 2</span>
+                                        <input type="text" class="form-control" placeholder="Sitelink2 description second line" name="usrname" />
+                                        <span class="input-group-text alert-success">2</span>
                                     </div>
-                                    <div className="input-group mb-2">
-                                        <span className="input-group-text">Sitelink 3</span>
-                                        <input type="text" className="form-control" placeholder="80 Character Description" name="usrname" />
-                                        <span className="input-group-text alert-success">21</span>
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">Sitelink 3</span>
+                                        <input type="text" class="form-control" placeholder="80 Character Description" name="usrname" />
+                                        <span class="input-group-text alert-success">21</span>
                                     </div>
-                                    <div className="input-group mb-2 ps-4 ds--input">
-                                        <span className="input-group-text">Description 1</span>
-                                        <input type="text" className="form-control" placeholder="Sitelink3 description first line" name="usrname" />
-                                        <span className="input-group-text alert-success">3</span>
+                                    <div class="input-group mb-2 ps-4 ds--input">
+                                        <span class="input-group-text">Description 1</span>
+                                        <input type="text" class="form-control" placeholder="Sitelink3 description first line" name="usrname" />
+                                        <span class="input-group-text alert-success">3</span>
                                     </div>
-                                    <div className="input-group mb-2 ps-4 ds--input">
-                                        <span className="input-group-text">Description 2</span>
-                                        <input type="text" className="form-control" placeholder="Sitelink3 description second line" name="usrname" />
-                                        <span className="input-group-text alert-success">2</span>
+                                    <div class="input-group mb-2 ps-4 ds--input">
+                                        <span class="input-group-text">Description 2</span>
+                                        <input type="text" class="form-control" placeholder="Sitelink3 description second line" name="usrname" />
+                                        <span class="input-group-text alert-success">2</span>
                                     </div>
-                                    <div className="input-group mb-2">
-                                        <span className="input-group-text">Sitelink 4</span>
-                                        <input type="text" className="form-control" placeholder="Automatic Domain Name" name="usrname" />
-                                        <span className="input-group-text alert-success">21</span>
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">Sitelink 4</span>
+                                        <input type="text" class="form-control" placeholder="Automatic Domain Name" name="usrname" />
+                                        <span class="input-group-text alert-success">21</span>
                                     </div>
-                                    <div className="input-group mb-2 ps-4 ds--input">
-                                        <span className="input-group-text">Description 1</span>
-                                        <input type="text" className="form-control" placeholder="Sitelink4 description first line" name="usrname" />
-                                        <span className="input-group-text alert-success">3</span>
+                                    <div class="input-group mb-2 ps-4 ds--input">
+                                        <span class="input-group-text">Description 1</span>
+                                        <input type="text" class="form-control" placeholder="Sitelink4 description first line" name="usrname" />
+                                        <span class="input-group-text alert-success">3</span>
                                     </div>
-                                    <div className="input-group mb-2 ps-4 ds--input">
-                                        <span className="input-group-text">Description 2</span>
-                                        <input type="text" className="form-control" placeholder="Sitelink4 description second line" name="usrname" />
-                                        <span className="input-group-text alert-success">2</span>
-                                    </div>
-                                </div>
-                                <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" className="form-check-input" id="check3" name="option3" value="something" />
-                                    <label className="form-check-label" htmlFor="check3">ADD CALLOUT ASSETS</label>
-                                </div>
-                                <div className="tab--content">
-                                    <div className="input-group mb-2">
-                                        <span className="input-group-text">Callout 1</span>
-                                        <input type="text" className="form-control" placeholder="Additional Text for Ad" name="usrname" />
-                                        <span className="input-group-text alert-success">15</span>
-                                    </div>
-                                    <div className="input-group mb-2">
-                                        <span className="input-group-text">Callout 2</span>
-                                        <input type="text" className="form-control" placeholder="Product/Service Details" name="usrname" />
-                                        <span className="input-group-text alert-success">18</span>
-                                    </div>
-                                    <div className="input-group mb-2">
-                                        <span className="input-group-text">Callout 3</span>
-                                        <input type="text" className="form-control" placeholder="Highlight Offers" name="usrname" />
-                                        <span className="input-group-text alert-success">21</span>
-                                    </div>
-                                    <div className="input-group mb-2">
-                                        <span className="input-group-text">Callout 4</span>
-                                        <input type="text" className="form-control" placeholder="Show Additional Benefits" name="usrname" />
-                                        <span className="input-group-text alert-success">21</span>
+                                    <div class="input-group mb-2 ps-4 ds--input">
+                                        <span class="input-group-text">Description 2</span>
+                                        <input type="text" class="form-control" placeholder="Sitelink4 description second line" name="usrname" />
+                                        <span class="input-group-text alert-success">2</span>
                                     </div>
                                 </div>
-                                <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" className="form-check-input" id="check4" name="option4" value="something" />
-                                    <label className="form-check-label" htmlFor="check4">ADD PROMOTIONS ASSET</label>
+                                <div class="form-check tab--item mb-3">
+                                    <input type="checkbox" class="form-check-input" id="check3" name="option3" value="something" />
+                                    <label class="form-check-label" htmlFor="check3">ADD CALLOUT ASSETS</label>
                                 </div>
-                                <div className="tab--content">
-                                    <div className="form-group row mb-3">
-                                        <strong className="col-3">Occasion</strong>
-                                        <div className="col-9">
-                                            <select className="form-control ">
-                                                <option value="" className="" selected="selected">None</option>
+                                <div class="tab--content">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">Callout 1</span>
+                                        <input type="text" class="form-control" placeholder="Additional Text for Ad" name="usrname" />
+                                        <span class="input-group-text alert-success">15</span>
+                                    </div>
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">Callout 2</span>
+                                        <input type="text" class="form-control" placeholder="Product/Service Details" name="usrname" />
+                                        <span class="input-group-text alert-success">18</span>
+                                    </div>
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">Callout 3</span>
+                                        <input type="text" class="form-control" placeholder="Highlight Offers" name="usrname" />
+                                        <span class="input-group-text alert-success">21</span>
+                                    </div>
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">Callout 4</span>
+                                        <input type="text" class="form-control" placeholder="Show Additional Benefits" name="usrname" />
+                                        <span class="input-group-text alert-success">21</span>
+                                    </div>
+                                </div>
+                                <div class="form-check tab--item mb-3">
+                                    <input type="checkbox" class="form-check-input" id="check4" name="option4" value="something" />
+                                    <label class="form-check-label" htmlFor="check4">ADD PROMOTIONS ASSET</label>
+                                </div>
+                                <div class="tab--content">
+                                    <div class="form-group row mb-3">
+                                        <strong class="col-3">Occasion</strong>
+                                        <div class="col-9">
+                                            <select class="form-control">
+                                                <option defaultValue="None">None</option>
                                                 <option label="New Year's" value="New-Year">New Year's</option>
                                                 <option label="Valentine's Day" value="Valentine-Day">Valentine's Day</option>
                                                 <option label="Easter" value="Easter">Easter</option>
@@ -196,11 +196,11 @@ function GoogleAdd() {
                                             </select>
                                         </div>
                                     </div>
-                                    <div className="form-group row mb-3">
-                                        <strong className="col-3">Currency</strong>
-                                        <div className="col-9">
-                                            <select className="form-control ">
-                                                <option value="" className="" selected="selected">USD</option>
+                                    <div class="form-group row mb-3">
+                                        <strong class="col-3">Currency</strong>
+                                        <div class="col-9">
+                                            <select class="form-control ">
+                                                <option value="" defaultValue="USD">USD</option>
                                                 <option label="AED" value="AED">AED</option>
                                                 <option label="ARS" value="ARS">ARS</option>
                                                 <option label="AUD" value="AUD">AUD</option>
@@ -253,63 +253,63 @@ function GoogleAdd() {
                                             </select>
                                         </div>
                                     </div>
-                                    <div className="form-group row mb-3">
-                                        <strong className="col-3">Promotion Type</strong>
-                                        <div className="col-5">
-                                            <select className="form-control">
-                                                <option value="" className="" selected="selected">Monetary discount</option>
+                                    <div class="form-group row mb-3">
+                                        <strong class="col-3">Promotion Type</strong>
+                                        <div class="col-5">
+                                            <select class="form-control">
+                                                <option value="" class="" defaultValue="Monetary discount">Monetary discount</option>
                                                 <option label="Percent discount" value="Percent-discount">Percent discount</option>
                                                 <option label="Up to monetary discount" value="Up-to-monetary-discount">Up to monetary discount</option>
                                                 <option label="Up to percent discount" value="Up-to-percent-discount">Up to percent discount</option>
                                             </select>
                                         </div>
-                                        <div className="col-4">
-                                            <input type="text" className="form-control" />
+                                        <div class="col-4">
+                                            <input type="text" class="form-control" />
                                         </div>
                                     </div>
-                                    <div className="input-group mb-3">
-                                        <span className="input-group-text">Item</span>
-                                        <input type="text" className="form-control" placeholder="Automatic Domain Name" name="usrname" />
-                                        <span className="input-group-text alert-success">0</span>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Item</span>
+                                        <input type="text" class="form-control" placeholder="Automatic Domain Name" name="usrname" />
+                                        <span class="input-group-text alert-success">0</span>
                                     </div>
-                                    <div className="form-group row mb-3">
-                                        <strong className="col-3">Promotion Details</strong>
-                                        <div className="col-5">
-                                            <select className="form-control">
-                                                <option value="" className="" selected="selected">None</option>
+                                    <div class="form-group row mb-3">
+                                        <strong class="col-3">Promotion Details</strong>
+                                        <div class="col-5">
+                                            <select class="form-control">
+                                                <option value="" class="" defaultValue="None">None</option>
                                                 <option label="On orders over" value="On-orders-over">On orders over</option>
                                                 <option label="Promo code" value="Promo-code">Promo code</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div className="form-group row mb-3">
-                                        <strong className="col-12">Promotion Dates</strong>
+                                    <div class="form-group row mb-3">
+                                        <strong class="col-12">Promotion Dates</strong>
                                     </div>
-                                    <div className="form-group row mb-3">
-                                        <div className="col-6">
-                                            <div className="input-group mb-3">
-                                                <span className="input-group-text">Start Date</span>
-                                                <input type="text" className="form-control br--right" placeholder="" name="usrname" />
+                                    <div class="form-group row mb-3">
+                                        <div class="col-6">
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text">Start Date</span>
+                                                <input type="text" class="form-control br--right" placeholder="" name="usrname" />
                                             </div>
                                         </div>
-                                        <div className="col-6">
-                                            <div className="input-group mb-3">
-                                                <span className="input-group-text">End Date</span>
-                                                <input type="text" className="form-control br--right" placeholder="" name="usrname" />
+                                        <div class="col-6">
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text">End Date</span>
+                                                <input type="text" class="form-control br--right" placeholder="" name="usrname" />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" className="form-check-input" id="check5" name="option5" value="something" />
-                                    <label className="form-check-label" htmlFor="check5">ADD PRICE ASSET</label>
+                                <div class="form-check tab--item mb-3">
+                                    <input type="checkbox" class="form-check-input" id="check5" name="option5" value="something" />
+                                    <label class="form-check-label" htmlFor="check5">ADD PRICE ASSET</label>
                                 </div>
-                                <div className="tab--content">
-                                    <div className="form-group row mb-3">
-                                        <strong className="col-3">Currency</strong>
-                                        <div className="col-9">
-                                            <select className="form-control">
-                                                <option value="?" selected="selected"></option>
+                                <div class="tab--content">
+                                    <div class="form-group row mb-3">
+                                        <strong class="col-3">Currency</strong>
+                                        <div class="col-9">
+                                            <select class="form-control">
+                                                <option value="?" defaultValue="?"></option>
                                                 <option label="USD" value="">USD</option>
                                                 <option label="GBP" value="">GBP</option>
                                                 <option label="EUR" value="">EUR</option>
@@ -318,100 +318,100 @@ function GoogleAdd() {
                                             </select>
                                         </div>
                                     </div>
-                                    <div className="form-group row mb-3">
-                                        <strong className="col-3">Price Qualifier</strong>
-                                        <div className="col-9">
-                                            <select className="form-control">
-                                                <option value="" className="" selected="selected">No qualifier</option>
+                                    <div class="form-group row mb-3">
+                                        <strong class="col-3">Price Qualifier</strong>
+                                        <div class="col-9">
+                                            <select class="form-control">
+                                                <option value="" class="" defaultValue="No qualifier">No qualifier</option>
                                                 <option label="From" value="">From</option>
                                                 <option label="Up to" value="">Up to</option>
                                                 <option label="Average" value="">Average</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div className="input-group mb-2">
-                                        <span className="input-group-text">Item 1</span>
-                                        <div className="input--merge">
-                                            <input type="text" className="form-control" placeholder="Header 1" name="usrname" />
-                                            <input type="number" className="form-control" placeholder="0" name="usrname" />
-                                            <input type="text" className="form-control" placeholder="Description 1" name="usrname" />
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">Item 1</span>
+                                        <div class="input--merge">
+                                            <input type="text" class="form-control" placeholder="Header 1" name="usrname" />
+                                            <input type="number" class="form-control" placeholder="0" name="usrname" />
+                                            <input type="text" class="form-control" placeholder="Description 1" name="usrname" />
                                         </div>
-                                        <span className="input-group-text alert-success span--br"><span>17</span> <span>--</span><span>12</span></span>
+                                        <span class="input-group-text alert-success span--br"><span>17</span> <span>--</span><span>12</span></span>
                                     </div>
-                                    <div className="input-group mb-2">
-                                        <span className="input-group-text">Item 2</span>
-                                        <div className="input--merge">
-                                            <input type="text" className="form-control" placeholder="Header 2" name="usrname" />
-                                            <input type="number" className="form-control" placeholder="0" name="usrname" />
-                                            <input type="text" className="form-control" placeholder="Description 2" name="usrname" />
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">Item 2</span>
+                                        <div class="input--merge">
+                                            <input type="text" class="form-control" placeholder="Header 2" name="usrname" />
+                                            <input type="number" class="form-control" placeholder="0" name="usrname" />
+                                            <input type="text" class="form-control" placeholder="Description 2" name="usrname" />
                                         </div>
-                                        <span className="input-group-text alert-success span--br"><span>17</span> <span>--</span><span>12</span></span>
+                                        <span class="input-group-text alert-success span--br"><span>17</span> <span>--</span><span>12</span></span>
                                     </div>
-                                    <div className="input-group mb-2">
-                                        <span className="input-group-text">Item 3</span>
-                                        <div className="input--merge">
-                                            <input type="text" className="form-control" placeholder="Header 3" name="usrname" />
-                                            <input type="number" className="form-control" placeholder="0" name="usrname" />
-                                            <input type="text" className="form-control" placeholder="Description 3" name="usrname" />
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">Item 3</span>
+                                        <div class="input--merge">
+                                            <input type="text" class="form-control" placeholder="Header 3" name="usrname" />
+                                            <input type="number" class="form-control" placeholder="0" name="usrname" />
+                                            <input type="text" class="form-control" placeholder="Description 3" name="usrname" />
                                         </div>
-                                        <span className="input-group-text alert-success span--br"><span>17</span> <span>--</span><span>12</span></span>
+                                        <span class="input-group-text alert-success span--br"><span>17</span> <span>--</span><span>12</span></span>
                                     </div>
-                                    <div className="input-group mb-2">
-                                        <span className="input-group-text">Item 4</span>
-                                        <div className="input--merge">
-                                            <input type="text" className="form-control" placeholder="Header 4" name="usrname" />
-                                            <input type="number" className="form-control" placeholder="0" name="usrname" />
-                                            <input type="text" className="form-control" placeholder="Description 4" name="usrname" />
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">Item 4</span>
+                                        <div class="input--merge">
+                                            <input type="text" class="form-control" placeholder="Header 4" name="usrname" />
+                                            <input type="number" class="form-control" placeholder="0" name="usrname" />
+                                            <input type="text" class="form-control" placeholder="Description 4" name="usrname" />
                                         </div>
-                                        <span className="input-group-text alert-success span--br"><span>17</span> <span>--</span><span>12</span></span>
+                                        <span class="input-group-text alert-success span--br"><span>17</span> <span>--</span><span>12</span></span>
                                     </div>
                                 </div>
-                                <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" className="form-check-input" id="check6" name="option6" value="something" />
-                                    <label className="form-check-label" htmlFor="check6">ADD CALL ASSET</label>
+                                <div class="form-check tab--item mb-3">
+                                    <input type="checkbox" class="form-check-input" id="check6" name="option6" value="something" />
+                                    <label class="form-check-label" htmlFor="check6">ADD CALL ASSET</label>
                                 </div>
-                                <div className="tab--content">
-                                    <div className="input-group mb-2">
-                                        <span className="input-group-text">Phone Number</span>
-                                        <input type="text" className="form-control" placeholder="8001234567" name="usrname" />
-                                        <span className="input-group-text alert-success">5</span>
+                                <div class="tab--content">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">Phone Number</span>
+                                        <input type="text" class="form-control" placeholder="8001234567" name="usrname" />
+                                        <span class="input-group-text alert-success">5</span>
                                     </div>
                                 </div>
-                                <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" className="form-check-input" id="check7" name="option7" value="something" />
-                                    <label className="form-check-label" htmlFor="check7">ADD LOCATION ASSETS</label>
+                                <div class="form-check tab--item mb-3">
+                                    <input type="checkbox" class="form-check-input" id="check7" name="option7" value="something" />
+                                    <label class="form-check-label" htmlFor="check7">ADD LOCATION ASSETS</label>
                                 </div>
-                                <div className="tab--content">
-                                    <div className="input-group mb-2">
-                                        <span className="input-group-text">Address</span>
-                                        <input type="text" className="form-control br--right" placeholder="" name="usrname" />
+                                <div class="tab--content">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">Address</span>
+                                        <input type="text" class="form-control br--right" placeholder="" name="usrname" />
                                     </div>
                                 </div>
-                                <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" className="form-check-input" id="check8" name="option8" value="something" />
-                                    <label className="form-check-label" htmlFor="check8">ADD MESSAGE ASSETS</label>
+                                <div class="form-check tab--item mb-3">
+                                    <input type="checkbox" class="form-check-input" id="check8" name="option8" value="something" />
+                                    <label class="form-check-label" htmlFor="check8">ADD MESSAGE ASSETS</label>
                                 </div>
-                                <div className="tab--content">
-                                    <div className="input-group mb-2">
-                                        <span className="input-group-text">Msg. Ext. Text</span>
-                                        <input type="text" className="form-control" placeholder="Got Questions? Send Us a Text!" name="usrname" />
-                                        <span className="input-group-text alert-success">5</span>
+                                <div class="tab--content">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">Msg. Ext. Text</span>
+                                        <input type="text" class="form-control" placeholder="Got Questions? Send Us a Text!" name="usrname" />
+                                        <span class="input-group-text alert-success">5</span>
                                     </div>
                                 </div>
-                                <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" className="form-check-input" id="check9" name="option9" value="something" />
-                                    <label className="form-check-label" htmlFor="check9">SHOW ADVERTISER RATING</label>
+                                <div class="form-check tab--item mb-3">
+                                    <input type="checkbox" class="form-check-input" id="check9" name="option9" value="something" />
+                                    <label class="form-check-label" htmlFor="check9">SHOW ADVERTISER RATING</label>
                                 </div>
-                                <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" className="form-check-input" id="check10" name="option10" value="something" />
-                                    <label className="form-check-label" htmlFor="check10">ADD STRUCTURED SNIPPETS ASSET</label>
+                                <div class="form-check tab--item mb-3">
+                                    <input type="checkbox" class="form-check-input" id="check10" name="option10" value="something" />
+                                    <label class="form-check-label" htmlFor="check10">ADD STRUCTURED SNIPPETS ASSET</label>
                                 </div>
-                                <div className="tab--content">
-                                    <div className="form-group row mb-3">
-                                        <strong className="col-3">Header</strong>
-                                        <div className="col-9">
-                                            <select className="form-control">
-                                                <option value="" className="" selected="selected">-- Choose Header --</option>
+                                <div class="tab--content">
+                                    <div class="form-group row mb-3">
+                                        <strong class="col-3">Header</strong>
+                                        <div class="col-9">
+                                            <select class="form-control">
+                                                <option value="" class="" defaultValue="-- Choose Header -">-- Choose Header --</option>
                                                 <option label="Amenities" value="">Amenities</option>
                                                 <option label="Brands" value="">Brands</option>
                                                 <option label="Courses" value="">Courses</option>
@@ -428,31 +428,31 @@ function GoogleAdd() {
                                             </select>
                                         </div>
                                     </div>
-                                    <div className="input-group mb-2">
-                                        <span className="input-group-text">Value 1</span>
-                                        <input type="text" className="form-control" placeholder="" name="usrname" />
-                                        <span className="input-group-text alert-success">25</span>
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">Value 1</span>
+                                        <input type="text" class="form-control" placeholder="" name="usrname" />
+                                        <span class="input-group-text alert-success">25</span>
                                     </div>
-                                    <div className="input-group mb-2">
-                                        <span className="input-group-text">Value 2</span>
-                                        <input type="text" className="form-control" placeholder="" name="usrname" />
-                                        <span className="input-group-text alert-success">25</span>
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">Value 2</span>
+                                        <input type="text" class="form-control" placeholder="" name="usrname" />
+                                        <span class="input-group-text alert-success">25</span>
                                     </div>
-                                    <div className="input-group mb-2">
-                                        <span className="input-group-text">Value 3</span>
-                                        <input type="text" className="form-control" placeholder="" name="usrname" />
-                                        <span className="input-group-text alert-success">25</span>
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">Value 3</span>
+                                        <input type="text" class="form-control" placeholder="" name="usrname" />
+                                        <span class="input-group-text alert-success">25</span>
                                     </div>
                                 </div>
                             </div>
-                            <div className="form--actions">
-                                <button className="btn btn-warning w-100 btn-reset text-white" type="button">RESET</button>
-                                <button className="btn btn-success text-white" type="button">SHARE THIS AD</button>
+                            <div class="form--actions">
+                                <button class="btn btn-warning w-100 btn-reset text-white" type="button">RESET</button>
+                                <button class="btn btn-success text-white" type="button">SHARE THIS AD</button>
                             </div>
                         </div>
-                        <div className="col-12 col-md-6 pl--45">
-                            <div className="main-sec">
-                                <div className="desktop-sec">
+                        <div class="col-12 col-md-6 pl--45">
+                            <div class="main-sec">
+                                <div class="desktop-sec">
                                     <div id="header">
                                         <div id="topbar">
                                             <Image id="searchbarimage" src="/googlelogo_color_120x44dp.png" alt="My Image" width={120} height={44} />
@@ -469,17 +469,17 @@ function GoogleAdd() {
                                         </div>
                                     </div>
                                     <div id="searchresultsarea">
-                                        <div className="searchresult">
-                                            <a><span className="adtag--site">Ad.&nbsp;</span>www.example.com/3-Headlines/2-Descriptions </a>
+                                        <div class="searchresult">
+                                            <a><span class="adtag--site">Ad.&nbsp;</span>www.example.com/3-Headlines/2-Descriptions </a>
                                             <h2>{`${headlineForm[0].headline} | ${headlineForm[1].headline} | ${headlineForm[2].headline}`}</h2>
                                             <p>{`${descriptionForm[0].description} - ${descriptionForm[1].description}`}</p>
                                         </div>
                                     </div>
                                     <div>
-                                        <div className="mobile-sec">
-                                            <div className="mobile-inner">
+                                        <div class="mobile-sec">
+                                            <div class="mobile-inner">
                                                 <div id="header">
-                                                    <div className="search-result">
+                                                    <div class="search-result">
                                                         <div class="g--img">
                                                             <Image id="searchbarimage" src="/googlelogo_color_120x44dp.png" alt="My Image" width={94} height={34} />
                                                         </div>
@@ -506,8 +506,8 @@ function GoogleAdd() {
                                                     </div>
                                                 </div>
                                                 <div id="searchresultsarea">
-                                                    <div className="searchresult">
-                                                        <a><span className="adtag--site">Ad.&nbsp;</span>www.example.com/3-Headlines/2-Descriptions </a>
+                                                    <div class="searchresult">
+                                                        <a><span class="adtag--site">Ad.&nbsp;</span>www.example.com/3-Headlines/2-Descriptions </a>
                                                         <h2>{`${headlineForm[0].headline} | ${headlineForm[1].headline} | ${headlineForm[2].headline}`}</h2>
                                                         <p>{`${descriptionForm[0].description} - ${descriptionForm[1].description}`}</p>
                                                     </div>
