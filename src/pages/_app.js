@@ -20,8 +20,8 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Component {...pageProps} />
-      <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" strategy="beforeInteractive" />
-      <Script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" strategy="beforeInteractive" />
+      <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" strategy="afterInteractive" />
+      <Script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" strategy="afterInteractive" />
 
     </>
   );
