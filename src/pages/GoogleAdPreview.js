@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Script from 'next/script';
 import $ from 'jquery';
 import Image from 'next/image';
+import { toast } from 'react-toastify';
 
 function GoogleAdPreview() {
     const [headlineForm, setHeadlineForm] = useState(['Make this headline count', 'And this one', `Don't forget this one`])
@@ -96,6 +97,9 @@ function GoogleAdPreview() {
         setSnippetsItems(newInputValues)
     }
 
+
+
+
     const handleSubmit = async () => {
         const payload = {
             headlines: headlineForm,
@@ -110,28 +114,25 @@ function GoogleAdPreview() {
             advertiser_rating: advertiserRating,
             structured_snippets: { ...structuredSnippets, snippetsItems }
         };
-        // setLoading(true);
-        // await withoutAuthAxios()
-        //     .post("/ads/save-new-ads", payload)
-        //     .then(
-        //         (response) => {
-        //             //  setLoading(false);
-        //             if (response.data.status === 1) {
-        //                 toast.success("Registration successfully");
-
-        //             } else {
-        //                 toast.error(response.data.message);
-        //             }
-        //         },
-        //         (error) => {
-        //             // setLoading(false);
-        //             toast.error(error.response.data.message);
-        //             console.log(error);
-        //         }
-        //     )
-        //     .catch((error) => {
-        //         console.log("errorrrr", error);
-        //     });
+        fetch('/api/save-new-ads', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 1) {
+                    toast.success('Registration successfully');
+                } else {
+                    toast.error(data.message);
+                }
+            })
+            .catch(error => {
+                toast.error(error.message);
+                console.log(error);
+            });
     };
 
     return (
