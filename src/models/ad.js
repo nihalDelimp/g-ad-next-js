@@ -37,6 +37,7 @@ const siteLinkSchema = new Schema({
 });
 
 const adSchema = new Schema({
+    final_url: String,
     headlines: [String],
     descriptions: [String],
     site_link_asset: [siteLinkSchema],

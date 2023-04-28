@@ -11,6 +11,7 @@ export default async function handler(req, res) {
         const adId = generateUniqueId();
         const ad = new Ad({
             _id: adId,
+            final_url: req.body.final_url,
             headlines: req.body.headlines,
             descriptions: req.body.headlines,
             site_link_asset: req.body.site_link_asset,
@@ -23,6 +24,7 @@ export default async function handler(req, res) {
             advertiser_rating: req.body.advertiser_rating,
             structured_snippets: req.body.structured_snippets,
         });
+        console.log(req.body.final_url)
         await ad.save();
         res.status(201).json({ id: adId });
     } catch (err) {
