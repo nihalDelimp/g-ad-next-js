@@ -182,7 +182,7 @@ function GoogleAdPreview() {
                                 <h3 className="title--sm mb-3">Headlines</h3>
                                 <div className="headline--inputs">
                                     {headlineForm.map((item, i) =>
-                                        <div className="input-group mb-2">
+                                        <div className="input-group mb-2" key={i}>
                                             <span className="input-group-text">Headline {i + 1}</span>
                                             <input type="text" className="form-control" value={item} onChange={(e) => handleChangeHeadLine(i, e)} placeholder="Enter Headline" name="headline" />
                                             <span className={`input-group-text ${maxHeadLineLimit - item.length >= 0 ? 'alert-success' : 'alert-danger'} `}>{maxHeadLineLimit - item.length}</span>
@@ -194,7 +194,7 @@ function GoogleAdPreview() {
                                 <h3 className="title--sm mb-3">DESCRIPTIONS</h3>
                                 <div className="headline--inputs">
                                     {descriptionForm.map((item, i) =>
-                                        <div className="input-group mb-2">
+                                        <div className="input-group mb-2" key={i}>
                                             <span className="input-group-text">Description {i + 1}</span>
                                             <textarea name="description" value={item} onChange={(e) => handleChangeDescription(i, e)} className="form-control" id="" rows="2"></textarea>
                                             <span className={`input-group-text ${maxDescriptionLimit - item.length >= 0 ? 'alert-success' : 'alert-danger'} `}>{maxDescriptionLimit - item.length}</span>
@@ -214,7 +214,7 @@ function GoogleAdPreview() {
                                     </div>
 
                                     {siteLinkAsset.map((item, i) =>
-                                        <React.Fragment>
+                                        <React.Fragment key={i}>
                                             <div className="input-group mb-2">
                                                 <span className="input-group-text">Sitelink {i + 1}</span>
                                                 <input type="text" className="form-control" onChange={(e) => handleChangeSiteLinkAsset(i, e)} name='headline' value={item.headline} placeholder="Show Headlines" />
@@ -240,7 +240,7 @@ function GoogleAdPreview() {
                                 </div>
                                 <div className="tab--content">
                                     {calloutAsset.map((item, i) =>
-                                        <div className="input-group mb-2">
+                                        <div className="input-group mb-2" key={i}>
                                             <span className="input-group-text">Callout {i + 1}</span>
                                             <input type="text" className="form-control" onChange={(e) => handleChangeCalloutAsset(i, e)} value={item} placeholder="Additional Text for Ad" name="callout" />
                                             <span className={`input-group-text ${maxCalloutLimit - item.length >= 0 ? 'alert-success' : 'alert-danger'} `}>{maxCalloutLimit - item.length}</span>
@@ -257,11 +257,11 @@ function GoogleAdPreview() {
                                         <div className="col-9">
                                             <select name='occasion' onChange={handleChangePromotionsAsset} value={promotionsAsset.occasion} className="form-control ">
                                                 <option value="" >Choose Occasion</option>
-                                                <option label="New Year's" selected="selected" value="New-Year's">New Year's</option>
-                                                <option label="Valentine's Day" value="Valentine's Day">Valentine's Day</option>
+                                                <option label="New Year&rsquo;s" selected="selected" value="New-Year's">New Year&rsquo;s</option>
+                                                <option label="Valentine&rsquo;s Day" value="Valentine's Day">Valentine&rsquo;s Day</option>
                                                 <option label="Easter" value="Easter">Easter</option>
-                                                <option label="Mother's Day" value="Mother's Day">Mother's Day</option>
-                                                <option label="Father's Day" value="Father's Day">Father's Day</option>
+                                                <option label="Mother&rsquo;s Day" value="Mother's Day">Mother&rsquo;s Day</option>
+                                                <option label="Father&rsquo;s Day" value="Father's Day">Father&rsquo;s Day</option>
                                                 <option label="Labor Day" value="Labor Day">Labor Day</option>
                                                 <option label="Back to school" value="Back to school">Back to school</option>
                                                 <option label="Halloween" value="Halloween">Halloween</option>
@@ -409,7 +409,7 @@ function GoogleAdPreview() {
                                     </div>
                                     {
                                         priceItems.map((item, i) =>
-                                            <div className="input-group mb-2">
+                                            <div className="input-group mb-2" key={i}>
                                                 <span className="input-group-text">Item {i + 1}</span>
                                                 <div className="input--merge">
                                                     <input type="text" className="form-control" onChange={(e) => handleChangePriceItems(i, e)} value={item.headline} placeholder="Header" name="headline" />
@@ -484,7 +484,7 @@ function GoogleAdPreview() {
                                     </div>
 
                                     {snippetsItems.map((element, i) =>
-                                        <div className="input-group mb-2">
+                                        <div className="input-group mb-2" key={i}>
                                             <span className="input-group-text">Value {i + 1}</span>
                                             <input type="text" onChange={(e) => handleChangeSnippetsItems(i, e)} value={element} className="form-control" placeholder="" name="item" />
                                             <span className={`input-group-text ${maxSnippetsItemLimit - element.length >= 0 ? 'alert-success' : 'alert-danger'} `}>{maxSnippetsItemLimit - element.length}</span>
