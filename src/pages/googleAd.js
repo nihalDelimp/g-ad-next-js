@@ -181,11 +181,11 @@ function GoogleAdd() {
                                         <div class="col-9">
                                             <select class="form-control">
                                                 <option defaultValue="None">None</option>
-                                                <option label="New Year's" value="New-Year">New Year's</option>
-                                                <option label="Valentine's Day" value="Valentine-Day">Valentine's Day</option>
+                                                <option label="New Year&rsquo;s" value="New-Year">New Year's</option>
+                                                <option label="Valentine&rsquo;s Day" value="Valentine-Day">Valentine's Day</option>
                                                 <option label="Easter" value="Easter">Easter</option>
-                                                <option label="Mother's Day" value="Mother-Day">Mother's Day</option>
-                                                <option label="Father's Day" value="Father-Day">Father's Day</option>
+                                                <option label="Mother&rsquo;s Day" value="Mother-Day">Mother's Day</option>
+                                                <option label="Father&rsquo;s Day" value="Father-Day">Father's Day</option>
                                                 <option label="Labor Day" value="Labor-Day">Labor Day</option>
                                                 <option label="Back to school" value="Back-to-school">Back to school</option>
                                                 <option label="Halloween" value="Halloween">Halloween</option>
