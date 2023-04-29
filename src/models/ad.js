@@ -49,6 +49,7 @@ const adSchema = new Schema({
     message: String,
     advertiser_rating: Boolean,
     structured_snippets: structuredSnippetsSchema,
+    generatedID: { type: String, unique: true }
 });
 
 let Ad;

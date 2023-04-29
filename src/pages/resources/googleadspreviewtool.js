@@ -3,9 +3,11 @@ import Script from 'next/script';
 import $ from 'jquery';
 import Image from 'next/image';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
-
-function GoogleAdPreview() {
+function GoogleAddPreviewDetails() {
+    const router = useRouter();
+    const { id } = router.query;
     const [finalUrl, setFinalUrl] = useState("https://example.com")
     const [headlineForm, setHeadlineForm] = useState(['Make this headline count', 'And this one', `Don't forget this one`])
     const [descriptionForm, setDescriptionForm] = useState(['Highlight Features of Your Service', 'description two'])
@@ -45,6 +47,69 @@ function GoogleAdPreview() {
     const maxPriceDescLimit = 30
     const maxPhoneLimit = 15
     const maxSnippetsItemLimit = 25
+
+
+    useEffect(() => {
+        getSpecificGoogleAdsDetails()
+    }, [id])
+
+
+    const getSpecificGoogleAdsDetails = async () => {
+        try {
+            const response = await fetch(`/api/get-ads-details?id=${id}`);
+            if (response.ok) {
+                const resData = await response.json();
+                const {
+                    final_url,
+                    headlines,
+                    descriptions,
+                    site_link_asset,
+                    callout_asset,
+                    promotions_asset,
+                    phone_number,
+                    address,
+                    message,
+                    advertiser_rating,
+                    price_asset,
+                    structured_snippets
+                } = resData;
+
+                const { header, snippetsItems } = structured_snippets;
+                const { currency, price_qualifier, priceItems } = price_asset;
+                setPriceAsset(prevState => ({
+                    ...prevState,
+                    'currency': currency,
+                    'price_qualifier': price_qualifier
+                }));
+                setPriceItems(priceItems);
+                setFinalUrl(final_url)
+                setstructuredSnippets(prevState => ({
+                    ...prevState,
+                    'header': header
+                }));
+                setSnippetsItems(snippetsItems);
+                setHeadlineForm(headlines);
+                setDescriptionForm(descriptions);
+                setSiteLinkAsset(site_link_asset);
+                setCalloutAsset(callout_asset);
+                setPromotionsAsset(promotions_asset);
+                setPhoneNumber(phone_number);
+                setAddress(address);
+                setMessage(message);
+                setAdvertiserRating(advertiser_rating);
+            } else {
+                const errorData = await response.json();
+                throw new Error(errorData.message);
+            }
+        } catch (error) {
+            toast.error(error.message);
+        }
+    };
+
+
+
+
+
 
 
     const handleChangeHeadLine = (i, event) => {
@@ -128,7 +193,7 @@ function GoogleAdPreview() {
             advertiser_rating: advertiserRating,
             structured_snippets: { ...structuredSnippets, snippetsItems }
         };
-        console.log(payload, "Payload")
+        // setLoading(true);
         fetch('/api/save-new-ads', {
             method: 'POST',
             headers: {
@@ -138,7 +203,6 @@ function GoogleAdPreview() {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data, "nihal")
                 if (data.id) {
                     // toast.success('Ads Saved');
                     setresponseTrue(true)
@@ -174,15 +238,15 @@ function GoogleAdPreview() {
                                 <form action="/action_page.php">
                                     <div className="input-group mb-3">
                                         <span className="input-group-text">Final URL</span>
-                                        <input type="search" className="form-control" value={finalUrl} onChange={(e) => setFinalUrl(e.target.value)} placeholder="Search" name="usrname" />
+                                        <input type="search" value={finalUrl} className="form-control" placeholder="Search" onChange={(e) => setFinalUrl(e.target.value)} name="usrname" />
                                     </div>
                                 </form>
                             </div>
                             <div className="headline--box mb-3">
-                                <h3 className="title--sm mb-3">Headlines</h3>
+                                <h3 className="title--sm mb-3">Headlines Details</h3>
                                 <div className="headline--inputs">
                                     {headlineForm.map((item, i) =>
-                                        <div className="input-group mb-2" key={i}>
+                                        <div key={i + 1} className="input-group mb-2">
                                             <span className="input-group-text">Headline {i + 1}</span>
                                             <input type="text" className="form-control" value={item} onChange={(e) => handleChangeHeadLine(i, e)} placeholder="Enter Headline" name="headline" />
                                             <span className={`input-group-text ${maxHeadLineLimit - item.length >= 0 ? 'alert-success' : 'alert-danger'} `}>{maxHeadLineLimit - item.length}</span>
@@ -194,7 +258,7 @@ function GoogleAdPreview() {
                                 <h3 className="title--sm mb-3">DESCRIPTIONS</h3>
                                 <div className="headline--inputs">
                                     {descriptionForm.map((item, i) =>
-                                        <div className="input-group mb-2" key={i}>
+                                        <div key={i + 1} className="input-group mb-2">
                                             <span className="input-group-text">Description {i + 1}</span>
                                             <textarea name="description" value={item} onChange={(e) => handleChangeDescription(i, e)} className="form-control" id="" rows="2"></textarea>
                                             <span className={`input-group-text ${maxDescriptionLimit - item.length >= 0 ? 'alert-success' : 'alert-danger'} `}>{maxDescriptionLimit - item.length}</span>
@@ -205,16 +269,16 @@ function GoogleAdPreview() {
                             <div className="checkbox--form--group mt-4">
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" className="form-check-input" onChange={() => setSiteLinkHead(!isSiteLinkHead)} id="check2" name="option2" value="something" />
-                                    <label className="form-check-label" for="check2">ADD SITELINK ASSETS</label>
+                                    <label className="form-check-label" htmlFor="check2">ADD SITELINK ASSETS</label>
                                 </div>
                                 <div className="tab--content">
                                     <div className="form-check tab--item--inner mb-3 pl-60">
                                         <input type="checkbox" className="form-check-input" onChange={() => setSiteLinkDesc(!isSiteLinkDesc)} id="check12" name="option12" value="something" />
-                                        <label className="form-check-label" for="check12">ADD SITELINK ASSETS</label>
+                                        <label className="form-check-label" htmlFor="check12">ADD SITELINK ASSETS</label>
                                     </div>
 
                                     {siteLinkAsset.map((item, i) =>
-                                        <React.Fragment key={i}>
+                                        <React.Fragment key={i + 1}>
                                             <div className="input-group mb-2">
                                                 <span className="input-group-text">Sitelink {i + 1}</span>
                                                 <input type="text" className="form-control" onChange={(e) => handleChangeSiteLinkAsset(i, e)} name='headline' value={item.headline} placeholder="Show Headlines" />
@@ -236,11 +300,11 @@ function GoogleAdPreview() {
                                 </div>
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" onChange={() => setCallout(!isCallout)} className="form-check-input" id="check3" name="option3" value="something" />
-                                    <label className="form-check-label" for="check3">ADD CALLOUT ASSETS</label>
+                                    <label className="form-check-label" htmlFor="check3">ADD CALLOUT ASSETS</label>
                                 </div>
                                 <div className="tab--content">
                                     {calloutAsset.map((item, i) =>
-                                        <div className="input-group mb-2" key={i}>
+                                        <div key={i + 1} className="input-group mb-2">
                                             <span className="input-group-text">Callout {i + 1}</span>
                                             <input type="text" className="form-control" onChange={(e) => handleChangeCalloutAsset(i, e)} value={item} placeholder="Additional Text for Ad" name="callout" />
                                             <span className={`input-group-text ${maxCalloutLimit - item.length >= 0 ? 'alert-success' : 'alert-danger'} `}>{maxCalloutLimit - item.length}</span>
@@ -249,7 +313,7 @@ function GoogleAdPreview() {
                                 </div>
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" onChange={() => setPromotion(!ispromotion)} className="form-check-input" id="check4" name="option4" value="something" />
-                                    <label className="form-check-label" for="check4">ADD PROMOTIONS ASSET</label>
+                                    <label className="form-check-label" htmlFor="check4">ADD PROMOTIONS ASSET</label>
                                 </div>
                                 <div className="tab--content">
                                     <div className="form-group row mb-3">
@@ -257,11 +321,11 @@ function GoogleAdPreview() {
                                         <div className="col-9">
                                             <select name='occasion' onChange={handleChangePromotionsAsset} value={promotionsAsset.occasion} className="form-control ">
                                                 <option value="" >Choose Occasion</option>
-                                                <option label="New Year&rsquo;s" selected="selected" value="New-Year's">New Year&rsquo;s</option>
-                                                <option label="Valentine&rsquo;s Day" value="Valentine's Day">Valentine&rsquo;s Day</option>
+                                                <option label="New Year's" selected="selected" value="New-Year's">New Year's</option>
+                                                <option label="Valentine's Day" value="Valentine's Day">Valentine's Day</option>
                                                 <option label="Easter" value="Easter">Easter</option>
-                                                <option label="Mother&rsquo;s Day" value="Mother's Day">Mother&rsquo;s Day</option>
-                                                <option label="Father&rsquo;s Day" value="Father's Day">Father&rsquo;s Day</option>
+                                                <option label="Mother's Day" value="Mother's Day">Mother's Day</option>
+                                                <option label="Father's Day" value="Father's Day">Father's Day</option>
                                                 <option label="Labor Day" value="Labor Day">Labor Day</option>
                                                 <option label="Back to school" value="Back to school">Back to school</option>
                                                 <option label="Halloween" value="Halloween">Halloween</option>
@@ -380,7 +444,7 @@ function GoogleAdPreview() {
                                 </div>
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" onChange={() => setAddPrice(!isAddPrice)} className="form-check-input" id="check5" name="option5" value="something" />
-                                    <label className="form-check-label" for="check5">ADD PRICE ASSET</label>
+                                    <label className="form-check-label" htmlFor="check5">ADD PRICE ASSET</label>
                                 </div>
                                 <div className="tab--content">
                                     <div className="form-group row mb-3">
@@ -409,7 +473,7 @@ function GoogleAdPreview() {
                                     </div>
                                     {
                                         priceItems.map((item, i) =>
-                                            <div className="input-group mb-2" key={i}>
+                                            <div key={i + 1} className="input-group mb-2">
                                                 <span className="input-group-text">Item {i + 1}</span>
                                                 <div className="input--merge">
                                                     <input type="text" className="form-control" onChange={(e) => handleChangePriceItems(i, e)} value={item.headline} placeholder="Header" name="headline" />
@@ -422,18 +486,18 @@ function GoogleAdPreview() {
                                 </div>
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" onChange={() => setCallAsset(!isCallAsset)} className="form-check-input" id="check6" name="option6" value="something" />
-                                    <label className="form-check-label" for="check6">ADD CALL ASSET</label>
+                                    <label className="form-check-label" htmlFor="check6">ADD CALL ASSET</label>
                                 </div>
                                 <div className="tab--content">
                                     <div className="input-group mb-2">
                                         <span className="input-group-text">Phone Number</span>
-                                        <input type="number" name="phoneNumber" onChange={(e) => setPhoneNumber(e.target.value)} className="form-control" placeholder="8001234567" />
+                                        <input type="number" name="phoneNumber" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} className="form-control" placeholder="8001234567" />
                                         <span className={`input-group-text ${maxPhoneLimit - phoneNumber.length >= 0 ? 'alert-success' : 'alert-danger'} `}>{maxPhoneLimit - phoneNumber.length}</span>
                                     </div>
                                 </div>
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" onChange={() => setLocationAsset(!isLocationAsset)} className="form-check-input" id="check7" name="option7" value="something" />
-                                    <label className="form-check-label" for="check7">ADD LOCATION ASSETS</label>
+                                    <label className="form-check-label" htmlFor="check7">ADD LOCATION ASSETS</label>
                                 </div>
                                 <div className="tab--content">
                                     <div className="input-group mb-2">
@@ -443,7 +507,7 @@ function GoogleAdPreview() {
                                 </div>
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" onChange={() => setMessageAsset(!isMessageAsset)} className="form-check-input" id="check8" name="option8" value="something" />
-                                    <label className="form-check-label" for="check8">ADD MESSAGE ASSETS</label>
+                                    <label className="form-check-label" htmlFor="check8">ADD MESSAGE ASSETS</label>
                                 </div>
                                 <div className="tab--content">
                                     <div className="input-group mb-2">
@@ -454,11 +518,11 @@ function GoogleAdPreview() {
                                 </div>
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" onChange={(e) => setAdvertiserRating(e.target.checked)} checked={advertiserRating} className="form-check-input" id="check9" name="option9" value="something" />
-                                    <label className="form-check-label" for="check9">SHOW ADVERTISER RATING</label>
+                                    <label className="form-check-label" htmlFor="check9">SHOW ADVERTISER RATING</label>
                                 </div>
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" onChange={() => setSnippetsAsset(!isSnippetsAsset)} className="form-check-input" id="check10" name="option10" value="something" />
-                                    <label className="form-check-label" for="check10">ADD STRUCTURED SNIPPETS ASSET</label>
+                                    <label className="form-check-label" htmlFor="check10">ADD STRUCTURED SNIPPETS ASSET</label>
                                 </div>
                                 <div className="tab--content">
                                     <div className="form-group row mb-3">
@@ -484,7 +548,7 @@ function GoogleAdPreview() {
                                     </div>
 
                                     {snippetsItems.map((element, i) =>
-                                        <div className="input-group mb-2" key={i}>
+                                        <div key={i + 1} className="input-group mb-2">
                                             <span className="input-group-text">Value {i + 1}</span>
                                             <input type="text" onChange={(e) => handleChangeSnippetsItems(i, e)} value={element} className="form-control" placeholder="" name="item" />
                                             <span className={`input-group-text ${maxSnippetsItemLimit - element.length >= 0 ? 'alert-success' : 'alert-danger'} `}>{maxSnippetsItemLimit - element.length}</span>
@@ -661,6 +725,7 @@ function GoogleAdPreview() {
                                                     <div className="search-result">
                                                         <div className="g--img">
                                                             <Image id="searchbarimage" src="/googlelogo_color_120x44dp.png" alt="Google logo" width={120} height={44} />
+
                                                             {/* <img id="searchbarimage" src={require("./image/googlelogo_color_120x44dp.png")} /> */}
                                                         </div>
                                                         <div className="mobile--topbar">
@@ -668,6 +733,7 @@ function GoogleAdPreview() {
                                                                 <input id="mobile-search-input" value="Search Term here..." className="form-control input" type="text" />
                                                                 <div className="btn-search">
                                                                     <Image id="searchbarimage" src="/Search.svg" alt="Google logo" width={30} height={32} />
+                                                                    {/* <img src={require("./image/search.svg").default} alt="" /> */}
                                                                 </div>
                                                             </div>
                                                             <div className="mob-captions">
@@ -812,4 +878,4 @@ function GoogleAdPreview() {
     )
 }
 
-export default GoogleAdPreview
+export default GoogleAddPreviewDetails

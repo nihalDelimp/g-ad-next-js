@@ -23,6 +23,7 @@ export default async function handler(req, res) {
             message: req.body.message,
             advertiser_rating: req.body.advertiser_rating,
             structured_snippets: req.body.structured_snippets,
+            generatedID: adId
         });
         console.log(req.body.final_url)
         await ad.save();
