@@ -321,11 +321,11 @@ function GoogleAddPreviewDetails() {
                                         <div className="col-9">
                                             <select name='occasion' onChange={handleChangePromotionsAsset} value={promotionsAsset.occasion} className="form-control ">
                                                 <option value="" >Choose Occasion</option>
-                                                <option label="New Year's" selected="selected" value="New-Year's">New Year's</option>
-                                                <option label="Valentine's Day" value="Valentine's Day">Valentine's Day</option>
+                                                <option label="New Year&rsquo;s" selected="selected" value="New-Year&rsquo;s">New Year&rsquo;s</option>
+                                                <option label="Valentine&rsquo;s Day" value="Valentine&rsquo;s Day">Valentine&rsquo;s Day</option>
                                                 <option label="Easter" value="Easter">Easter</option>
-                                                <option label="Mother's Day" value="Mother's Day">Mother's Day</option>
-                                                <option label="Father's Day" value="Father's Day">Father's Day</option>
+                                                <option label="Mother&rsquo;s Day" value="Mother&rsquo;s Day">Mother&rsquo;s Day</option>
+                                                <option label="Father&rsquo;s Day" value="Father&rsquo;s Day">Father&rsquo;s Day</option>
                                                 <option label="Labor Day" value="Labor Day">Labor Day</option>
                                                 <option label="Back to school" value="Back to school">Back to school</option>
                                                 <option label="Halloween" value="Halloween">Halloween</option>
