@@ -905,7 +905,8 @@ function GoogleAddPreviewDetails() {
                                                                 </div>
                                                             </div>
                                                         }
-
+                                                      
+                                                      { (isLocationAsset || isCallAsset ) &&
                                                         <div className="location--wrapper--mb">
                                                             <div className="location--and--phone">
                                                                 {isLocationAsset &&
@@ -919,7 +920,7 @@ function GoogleAddPreviewDetails() {
                                                                 }
                                                             </div>
                                                         </div>
-
+}
                                                         {isMessageAsset &&
                                                             <div className="mb--message">
                                                                 <i className="fa-regular fa-comment"></i> <span className="p--title call--asset ms-1">{message}</span>
