@@ -258,12 +258,12 @@ function GoogleAdPreview() {
                             </div>
                             <div className="checkbox--form--group mt-4">
                                 <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" className="form-check-input" onChange={() => setSiteLinkHead(!isSiteLinkHead)} id="check2" name="option2" value="something" />
+                                    <input type="checkbox" checked = {isSiteLinkHead} className="form-check-input" onChange={() => setSiteLinkHead(!isSiteLinkHead)} id="check2" name="option2" value="something" />
                                     <label className="form-check-label" for="check2">ADD SITELINK ASSETS</label>
                                 </div>
                                 <div className="tab--content">
                                     <div className="form-check tab--item--inner mb-3 pl-60">
-                                        <input type="checkbox" className="form-check-input" onChange={() => setSiteLinkDesc(!isSiteLinkDesc)} id="check12" name="option12" value="something" />
+                                        <input type="checkbox" checked = {isSiteLinkDesc} className="form-check-input" onChange={() => setSiteLinkDesc(!isSiteLinkDesc)} id="check12" name="option12" value="something" />
                                         <label className="form-check-label" for="check12">ADD SITELINK ASSETS</label>
                                     </div>
 
@@ -289,7 +289,7 @@ function GoogleAdPreview() {
 
                                 </div>
                                 <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" onChange={() => setCallout(!isCallout)} className="form-check-input" id="check3" name="option3" value="something" />
+                                    <input type="checkbox" checked = {isCallout} onChange={() => setCallout(!isCallout)} className="form-check-input" id="check3" name="option3" value="something" />
                                     <label className="form-check-label" for="check3">ADD CALLOUT ASSETS</label>
                                 </div>
                                 <div className="tab--content">
@@ -302,7 +302,7 @@ function GoogleAdPreview() {
                                     )}
                                 </div>
                                 <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" onChange={() => setPromotion(!ispromotion)} className="form-check-input" id="check4" name="option4" value="something" />
+                                    <input type="checkbox" checked = {ispromotion} onChange={() => setPromotion(!ispromotion)} className="form-check-input" id="check4" name="option4" value="something" />
                                     <label className="form-check-label" for="check4">ADD PROMOTIONS ASSET</label>
                                 </div>
                                 <div className="tab--content">
@@ -433,7 +433,7 @@ function GoogleAdPreview() {
                                     </div>
                                 </div>
                                 <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" onChange={() => setAddPrice(!isAddPrice)} className="form-check-input" id="check5" name="option5" value="something" />
+                                    <input type="checkbox" checked = {isAddPrice} onChange={() => setAddPrice(!isAddPrice)} className="form-check-input" id="check5" name="option5" value="something" />
                                     <label className="form-check-label" for="check5">ADD PRICE ASSET</label>
                                 </div>
                                 <div className="tab--content">
@@ -475,7 +475,7 @@ function GoogleAdPreview() {
                                         )}
                                 </div>
                                 <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" onChange={() => setCallAsset(!isCallAsset)} className="form-check-input" id="check6" name="option6" value="something" />
+                                    <input type="checkbox" checked = {isCallAsset} onChange={() => setCallAsset(!isCallAsset)} className="form-check-input" id="check6" name="option6" value="something" />
                                     <label className="form-check-label" for="check6">ADD CALL ASSET</label>
                                 </div>
                                 <div className="tab--content">
@@ -486,7 +486,7 @@ function GoogleAdPreview() {
                                     </div>
                                 </div>
                                 <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" onChange={() => setLocationAsset(!isLocationAsset)} className="form-check-input" id="check7" name="option7" value="something" />
+                                    <input type="checkbox" checked = {isLocationAsset} onChange={() => setLocationAsset(!isLocationAsset)} className="form-check-input" id="check7" name="option7" value="something" />
                                     <label className="form-check-label" for="check7">ADD LOCATION ASSETS</label>
                                 </div>
                                 <div className="tab--content">
@@ -496,7 +496,7 @@ function GoogleAdPreview() {
                                     </div>
                                 </div>
                                 <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" onChange={() => setMessageAsset(!isMessageAsset)} className="form-check-input" id="check8" name="option8" value="something" />
+                                    <input type="checkbox" checked = {isMessageAsset} onChange={() => setMessageAsset(!isMessageAsset)} className="form-check-input" id="check8" name="option8" value="something" />
                                     <label className="form-check-label" for="check8">ADD MESSAGE ASSETS</label>
                                 </div>
                                 <div className="tab--content">
@@ -511,7 +511,7 @@ function GoogleAdPreview() {
                                     <label className="form-check-label" for="check9">SHOW ADVERTISER RATING</label>
                                 </div>
                                 <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" onChange={() => setSnippetsAsset(!isSnippetsAsset)} className="form-check-input" id="check10" name="option10" value="something" />
+                                    <input type="checkbox" checked = {isSnippetsAsset} onChange={() => setSnippetsAsset(!isSnippetsAsset)} className="form-check-input" id="check10" name="option10" value="something" />
                                     <label className="form-check-label" for="check10">ADD STRUCTURED SNIPPETS ASSET</label>
                                 </div>
                                 <div className="tab--content">
