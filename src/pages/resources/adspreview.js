@@ -353,12 +353,12 @@ function GoogleAddPreviewDetails() {
                                                 <input type="text" className="form-control" onChange={(e) => handleChangeSiteLinkAsset(i, e)} name='headline' value={item.headline} placeholder="Show Headlines" />
                                                 <span className={`input-group-text ${maxSiteLinkHeadLimit - item.headline.length >= 0 ? 'alert-success' : 'alert-danger'} `}>{maxSiteLinkHeadLimit - item.headline.length}</span>
                                             </div>
-                                            <div className="input-group mb-2 ps-4 ds--input">
+                                            <div className={`input-group mb-2 ps-4 ds--input ${isSiteLinkDesc ? 'active' : ''} `}>
                                                 <span className="input-group-text">Description 1</span>
                                                 <input type="text" className="form-control" placeholder="Sitelink description" onChange={(e) => handleChangeSiteLinkAsset(i, e)} value={item.description_1} name="description_1" />
                                                 <span className={`input-group-text ${maxSiteLinkDescLimit - item.description_1.length >= 0 ? 'alert-success' : 'alert-danger'} `}>{maxSiteLinkDescLimit - item.description_1.length}</span>
                                             </div>
-                                            <div className="input-group mb-2 ps-4 ds--input">
+                                            <div className={`input-group mb-2 ps-4 ds--input ${isSiteLinkDesc ? 'active' : ''} `}>
                                                 <span className="input-group-text">Description 2</span>
                                                 <input type="text" className="form-control" placeholder="Sitelink description" onChange={(e) => handleChangeSiteLinkAsset(i, e)} value={item.description_2} name="description_2" />
                                                 <span className={`input-group-text ${maxSiteLinkDescLimit - item.description_2.length >= 0 ? 'alert-success' : 'alert-danger'} `}>{maxSiteLinkDescLimit - item.description_2.length}</span>
@@ -811,7 +811,7 @@ function GoogleAddPreviewDetails() {
                                                 </div>
                                                 <div id="searchresultsarea">
                                                     <div className="searchresult">
-                                                    <span className="call--add row ms-1"><a className="ad--heading col-10"><span className="adtag--ad">Ad ·</span>www.example.com/3-Headlines/2-Descriptions </a> <span className='col-2 text-center mt-2'><Image className='bell--img' src="/bell.png" width={12}  height={13} alt="" /></span> </span>
+                                                    <span className="call--add row ms-1"><a className="ad--heading col-10"><span className="adtag--ad">Ad ·</span>{{finalUrl}}</a> <span className='col-2 text-center mt-2'><Image className='bell--img' src="/bell.png" width={12}  height={13} alt="" /></span> </span>
                                                         <h2 className="fm--headline mt-1"><span>{headlineForm[0]}</span><span>{headlineForm[1]}</span><span>{headlineForm[2]}</span></h2>
                                                         {advertiserRating &&
                                                             <div className="advertiger--rating">
