@@ -107,11 +107,6 @@ function GoogleAddPreviewDetails() {
     };
 
 
-
-
-
-
-
     const handleChangeHeadLine = (i, event) => {
         const { value } = event.target
         let newInputValues = [...headlineForm];
@@ -191,7 +186,16 @@ function GoogleAddPreviewDetails() {
             address: address,
             message: message,
             advertiser_rating: advertiserRating,
-            structured_snippets: { ...structuredSnippets, snippetsItems }
+            structured_snippets: { ...structuredSnippets, snippetsItems },
+            isSiteLinkHead, 
+            isSiteLinkDesc,
+            isCallout, 
+            ispromotion, 
+            isAddPrice, 
+            isCallAsset, 
+            isLocationAsset, 
+            isMessageAsset, 
+            isSnippetsAsset,
         };
         // setLoading(true);
         fetch('/api/save-new-ads', {
@@ -234,19 +238,19 @@ function GoogleAddPreviewDetails() {
                 <div className="container">
                     <div className="row">
                         <div className="col-12 col-md-6 pr--45">
-                            <div className="search--form--left">
+                            <div className="search--form--left  mt-3">
                                 <form action="/action_page.php">
                                     <div className="input-group mb-3">
                                         <span className="input-group-text">Final URL</span>
-                                        <input type="search" value={finalUrl} className="form-control" placeholder="Search" onChange={(e) => setFinalUrl(e.target.value)} name="usrname" />
+                                        <input type="search" className="form-control" value={finalUrl} onChange={(e) => setFinalUrl(e.target.value)} placeholder="Search" name="usrname" />
                                     </div>
                                 </form>
                             </div>
                             <div className="headline--box mb-3">
-                                <h3 className="title--sm mb-3">Headlines Details</h3>
+                                <h3 className="title--sm mb-3">Headlines</h3>
                                 <div className="headline--inputs">
                                     {headlineForm.map((item, i) =>
-                                        <div key={i + 1} className="input-group mb-2">
+                                        <div className="input-group mb-2" key={i}>
                                             <span className="input-group-text">Headline {i + 1}</span>
                                             <input type="text" className="form-control" value={item} onChange={(e) => handleChangeHeadLine(i, e)} placeholder="Enter Headline" name="headline" />
                                             <span className={`input-group-text ${maxHeadLineLimit - item.length >= 0 ? 'alert-success' : 'alert-danger'} `}>{maxHeadLineLimit - item.length}</span>
@@ -258,7 +262,7 @@ function GoogleAddPreviewDetails() {
                                 <h3 className="title--sm mb-3">DESCRIPTIONS</h3>
                                 <div className="headline--inputs">
                                     {descriptionForm.map((item, i) =>
-                                        <div key={i + 1} className="input-group mb-2">
+                                        <div className="input-group mb-2" key={i}>
                                             <span className="input-group-text">Description {i + 1}</span>
                                             <textarea name="description" value={item} onChange={(e) => handleChangeDescription(i, e)} className="form-control" id="" rows="2"></textarea>
                                             <span className={`input-group-text ${maxDescriptionLimit - item.length >= 0 ? 'alert-success' : 'alert-danger'} `}>{maxDescriptionLimit - item.length}</span>
@@ -269,16 +273,16 @@ function GoogleAddPreviewDetails() {
                             <div className="checkbox--form--group mt-4">
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" className="form-check-input" onChange={() => setSiteLinkHead(!isSiteLinkHead)} id="check2" name="option2" value="something" />
-                                    <label className="form-check-label" htmlFor="check2">ADD SITELINK ASSETS</label>
+                                    <label className="form-check-label" for="check2">ADD SITELINK ASSETS</label>
                                 </div>
                                 <div className="tab--content">
                                     <div className="form-check tab--item--inner mb-3 pl-60">
                                         <input type="checkbox" className="form-check-input" onChange={() => setSiteLinkDesc(!isSiteLinkDesc)} id="check12" name="option12" value="something" />
-                                        <label className="form-check-label" htmlFor="check12">ADD SITELINK ASSETS</label>
+                                        <label className="form-check-label" for="check12">ADD SITELINK ASSETS</label>
                                     </div>
 
                                     {siteLinkAsset.map((item, i) =>
-                                        <React.Fragment key={i + 1}>
+                                        <React.Fragment key={i}>
                                             <div className="input-group mb-2">
                                                 <span className="input-group-text">Sitelink {i + 1}</span>
                                                 <input type="text" className="form-control" onChange={(e) => handleChangeSiteLinkAsset(i, e)} name='headline' value={item.headline} placeholder="Show Headlines" />
@@ -300,11 +304,11 @@ function GoogleAddPreviewDetails() {
                                 </div>
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" onChange={() => setCallout(!isCallout)} className="form-check-input" id="check3" name="option3" value="something" />
-                                    <label className="form-check-label" htmlFor="check3">ADD CALLOUT ASSETS</label>
+                                    <label className="form-check-label" for="check3">ADD CALLOUT ASSETS</label>
                                 </div>
                                 <div className="tab--content">
                                     {calloutAsset.map((item, i) =>
-                                        <div key={i + 1} className="input-group mb-2">
+                                        <div className="input-group mb-2" key={i}>
                                             <span className="input-group-text">Callout {i + 1}</span>
                                             <input type="text" className="form-control" onChange={(e) => handleChangeCalloutAsset(i, e)} value={item} placeholder="Additional Text for Ad" name="callout" />
                                             <span className={`input-group-text ${maxCalloutLimit - item.length >= 0 ? 'alert-success' : 'alert-danger'} `}>{maxCalloutLimit - item.length}</span>
@@ -313,7 +317,7 @@ function GoogleAddPreviewDetails() {
                                 </div>
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" onChange={() => setPromotion(!ispromotion)} className="form-check-input" id="check4" name="option4" value="something" />
-                                    <label className="form-check-label" htmlFor="check4">ADD PROMOTIONS ASSET</label>
+                                    <label className="form-check-label" for="check4">ADD PROMOTIONS ASSET</label>
                                 </div>
                                 <div className="tab--content">
                                     <div className="form-group row mb-3">
@@ -321,11 +325,11 @@ function GoogleAddPreviewDetails() {
                                         <div className="col-9">
                                             <select name='occasion' onChange={handleChangePromotionsAsset} value={promotionsAsset.occasion} className="form-control ">
                                                 <option value="" >Choose Occasion</option>
-                                                <option label="New Year&rsquo;s" selected="selected" value="New-Year&rsquo;s">New Year&rsquo;s</option>
-                                                <option label="Valentine&rsquo;s Day" value="Valentine&rsquo;s Day">Valentine&rsquo;s Day</option>
+                                                <option label="New Year&rsquo;s" selected="selected" value="New-Year's">New Year&rsquo;s</option>
+                                                <option label="Valentine&rsquo;s Day" value="Valentine's Day">Valentine&rsquo;s Day</option>
                                                 <option label="Easter" value="Easter">Easter</option>
-                                                <option label="Mother&rsquo;s Day" value="Mother&rsquo;s Day">Mother&rsquo;s Day</option>
-                                                <option label="Father&rsquo;s Day" value="Father&rsquo;s Day">Father&rsquo;s Day</option>
+                                                <option label="Mother&rsquo;s Day" value="Mother's Day">Mother&rsquo;s Day</option>
+                                                <option label="Father&rsquo;s Day" value="Father's Day">Father&rsquo;s Day</option>
                                                 <option label="Labor Day" value="Labor Day">Labor Day</option>
                                                 <option label="Back to school" value="Back to school">Back to school</option>
                                                 <option label="Halloween" value="Halloween">Halloween</option>
@@ -444,7 +448,7 @@ function GoogleAddPreviewDetails() {
                                 </div>
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" onChange={() => setAddPrice(!isAddPrice)} className="form-check-input" id="check5" name="option5" value="something" />
-                                    <label className="form-check-label" htmlFor="check5">ADD PRICE ASSET</label>
+                                    <label className="form-check-label" for="check5">ADD PRICE ASSET</label>
                                 </div>
                                 <div className="tab--content">
                                     <div className="form-group row mb-3">
@@ -473,7 +477,7 @@ function GoogleAddPreviewDetails() {
                                     </div>
                                     {
                                         priceItems.map((item, i) =>
-                                            <div key={i + 1} className="input-group mb-2">
+                                            <div className="input-group mb-2" key={i}>
                                                 <span className="input-group-text">Item {i + 1}</span>
                                                 <div className="input--merge">
                                                     <input type="text" className="form-control" onChange={(e) => handleChangePriceItems(i, e)} value={item.headline} placeholder="Header" name="headline" />
@@ -486,18 +490,18 @@ function GoogleAddPreviewDetails() {
                                 </div>
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" onChange={() => setCallAsset(!isCallAsset)} className="form-check-input" id="check6" name="option6" value="something" />
-                                    <label className="form-check-label" htmlFor="check6">ADD CALL ASSET</label>
+                                    <label className="form-check-label" for="check6">ADD CALL ASSET</label>
                                 </div>
                                 <div className="tab--content">
                                     <div className="input-group mb-2">
                                         <span className="input-group-text">Phone Number</span>
-                                        <input type="number" name="phoneNumber" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} className="form-control" placeholder="8001234567" />
+                                        <input type="number" name="phoneNumber" onChange={(e) => setPhoneNumber(e.target.value)} className="form-control" placeholder="8001234567" />
                                         <span className={`input-group-text ${maxPhoneLimit - phoneNumber.length >= 0 ? 'alert-success' : 'alert-danger'} `}>{maxPhoneLimit - phoneNumber.length}</span>
                                     </div>
                                 </div>
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" onChange={() => setLocationAsset(!isLocationAsset)} className="form-check-input" id="check7" name="option7" value="something" />
-                                    <label className="form-check-label" htmlFor="check7">ADD LOCATION ASSETS</label>
+                                    <label className="form-check-label" for="check7">ADD LOCATION ASSETS</label>
                                 </div>
                                 <div className="tab--content">
                                     <div className="input-group mb-2">
@@ -507,7 +511,7 @@ function GoogleAddPreviewDetails() {
                                 </div>
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" onChange={() => setMessageAsset(!isMessageAsset)} className="form-check-input" id="check8" name="option8" value="something" />
-                                    <label className="form-check-label" htmlFor="check8">ADD MESSAGE ASSETS</label>
+                                    <label className="form-check-label" for="check8">ADD MESSAGE ASSETS</label>
                                 </div>
                                 <div className="tab--content">
                                     <div className="input-group mb-2">
@@ -518,11 +522,11 @@ function GoogleAddPreviewDetails() {
                                 </div>
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" onChange={(e) => setAdvertiserRating(e.target.checked)} checked={advertiserRating} className="form-check-input" id="check9" name="option9" value="something" />
-                                    <label className="form-check-label" htmlFor="check9">SHOW ADVERTISER RATING</label>
+                                    <label className="form-check-label" for="check9">SHOW ADVERTISER RATING</label>
                                 </div>
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" onChange={() => setSnippetsAsset(!isSnippetsAsset)} className="form-check-input" id="check10" name="option10" value="something" />
-                                    <label className="form-check-label" htmlFor="check10">ADD STRUCTURED SNIPPETS ASSET</label>
+                                    <label className="form-check-label" for="check10">ADD STRUCTURED SNIPPETS ASSET</label>
                                 </div>
                                 <div className="tab--content">
                                     <div className="form-group row mb-3">
@@ -548,7 +552,7 @@ function GoogleAddPreviewDetails() {
                                     </div>
 
                                     {snippetsItems.map((element, i) =>
-                                        <div key={i + 1} className="input-group mb-2">
+                                        <div className="input-group mb-2" key={i}>
                                             <span className="input-group-text">Value {i + 1}</span>
                                             <input type="text" onChange={(e) => handleChangeSnippetsItems(i, e)} value={element} className="form-control" placeholder="" name="item" />
                                             <span className={`input-group-text ${maxSnippetsItemLimit - element.length >= 0 ? 'alert-success' : 'alert-danger'} `}>{maxSnippetsItemLimit - element.length}</span>
@@ -565,7 +569,7 @@ function GoogleAddPreviewDetails() {
                                     <div className="row ">
                                         <div className="col-12 alert-success p-4">
                                             <h4 className="fs--24">Copy and share the following URL: </h4>
-                                            <a className="text-black share--url" target="_blank" href={`/resources/googleadspreviewtool?id=${responseID}`}>{window.location.hostname}/resources/google-ads-preview-tool?id={responseID}</a>
+                                            <a className="text-black share--url" target="_blank" href={`/resources/adspreview?id=${responseID}`}>http://{window.location.hostname}/resources/adspreview?id={responseID}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -591,18 +595,14 @@ function GoogleAddPreviewDetails() {
                                     </div>
                                     <div id="searchresultsarea" className="search--resut--desktop">
                                         <div className="searchresult">
-                                            <span className="call--add"><a className="ad--heading"><span className="adtag--ad">Ad.&nbsp;</span>www.example.com/3-Headlines/2-Descriptions </a> {isCallAsset && <span className="p--title call--asset ms-1">{phoneNumber}</span>}</span>
-                                            <h2 className="fm--headline mt-1"><span>{headlineForm[0]}</span><span>{headlineForm[1]}</span><span>{headlineForm[2]}</span></h2>
+                                        <span className="call--add mt-1"><a className="ad--heading"><span className="adtag--ad">Ad&nbsp;·</span>www.example.com/3-Headlines/2-Descriptions <Image className='down--arrow' width = {10} height = {6} src="/down-arrow.png" alt="" /> </a> {isCallAsset && <span className="p--title call--asset ms-1">{phoneNumber}</span>}</span>
+                                            <h2 className="fm--headline mt-2"><span>{headlineForm[0]}</span><span>{headlineForm[1]}</span><span>{headlineForm[2]}</span></h2>
 
                                             {advertiserRating &&
                                                 <div className="advertiger--rating">
                                                     <span className="p--title">4</span>
                                                     <span className="advertiger--rating--span">
-                                                        <i className="fa-solid fa-star orange-star"></i>
-                                                        <i className="fa-solid fa-star orange-star"></i>
-                                                        <i className="fa-solid fa-star orange-star"></i>
-                                                        <i className="fa-solid fa-star orange-star"></i>
-                                                        <i className="fa-solid fa-star gray-star"></i>
+                                                        <Image className='star--img' src="/star--new.png" width={67} height={14} alt="" />
                                                     </span>
                                                     <span className="p--title">advertiser rating</span>
                                                 </div>
@@ -629,7 +629,7 @@ function GoogleAddPreviewDetails() {
                                                 </div>
                                             }
 
-                                            {isSiteLinkHead && <div className="row sitelink">
+                                            {isSiteLinkHead && <div className="row sitelink px--20 mt-2">
                                                 <div className="col-md-6 col-6">
                                                     <div className="fisrt--heading">
                                                         <a href="#">{siteLinkAsset[0].headline}</a>
@@ -679,12 +679,12 @@ function GoogleAddPreviewDetails() {
 
                                             {isLocationAsset &&
                                                 <div className="location--asset">
-                                                    <span className="p--title"><i className="fa-solid fa-location-dot"></i> <a href="#">{address}</a></span>
+                                                    <span className="p--title"><Image src="/location-icon.png" width={11} height={17} alt="" /> <a href="#">{address}</a></span>
                                                 </div>
                                             }
 
                                             {isAddPrice &&
-                                                <div className="price--asset">
+                                                <div className="price--asset ms-2 mt-1">
                                                     <div className="header--price--asset">
                                                         <div className="hd--text p--title">
                                                             {priceItems[0].headline}
@@ -725,7 +725,6 @@ function GoogleAddPreviewDetails() {
                                                     <div className="search-result">
                                                         <div className="g--img">
                                                             <Image id="searchbarimage" src="/googlelogo_color_120x44dp.png" alt="Google logo" width={120} height={44} />
-
                                                             {/* <img id="searchbarimage" src={require("./image/googlelogo_color_120x44dp.png")} /> */}
                                                         </div>
                                                         <div className="mobile--topbar">
@@ -733,7 +732,6 @@ function GoogleAddPreviewDetails() {
                                                                 <input id="mobile-search-input" value="Search Term here..." className="form-control input" type="text" />
                                                                 <div className="btn-search">
                                                                     <Image id="searchbarimage" src="/Search.svg" alt="Google logo" width={30} height={32} />
-                                                                    {/* <img src={require("./image/search.svg").default} alt="" /> */}
                                                                 </div>
                                                             </div>
                                                             <div className="mob-captions">
@@ -748,17 +746,13 @@ function GoogleAddPreviewDetails() {
                                                 </div>
                                                 <div id="searchresultsarea">
                                                     <div className="searchresult">
-                                                        <span className="call--add"><a className="ad--heading"><span className="adtag--ad">Ad.&nbsp;</span>www.example.com/3-Headlines/2-Descriptions </a> </span>
+                                                    <span className="call--add row ms-1"><a className="ad--heading col-10"><span className="adtag--ad">Ad ·</span>www.example.com/3-Headlines/2-Descriptions </a> <span className='col-2 text-center mt-2'><Image className='bell--img' src="/bell.png" width={12}  height={13} alt="" /></span> </span>
                                                         <h2 className="fm--headline mt-1"><span>{headlineForm[0]}</span><span>{headlineForm[1]}</span><span>{headlineForm[2]}</span></h2>
                                                         {advertiserRating &&
                                                             <div className="advertiger--rating">
                                                                 <span className="p--title">4</span>
                                                                 <span className="advertiger--rating--span">
-                                                                    <i className="fa-solid fa-star orange-star"></i>
-                                                                    <i className="fa-solid fa-star orange-star"></i>
-                                                                    <i className="fa-solid fa-star orange-star"></i>
-                                                                    <i className="fa-solid fa-star orange-star"></i>
-                                                                    <i className="fa-solid fa-star gray-star"></i>
+                                                                    <Image className='star--img' src="/star--new.png" width={67} height={14} alt="" />
                                                                 </span>
                                                                 <span className="p--title">advertiser rating</span>
                                                             </div>
@@ -836,8 +830,7 @@ function GoogleAddPreviewDetails() {
 
                                                         {ispromotion &&
                                                             <div className="getpromoline ">
-                                                                <div className="tag--icon"><i className="fa-solid fa-tag"></i></div>
-                                                                <div className="promaline--data">
+                                                                <div className="tag--icon"><Image className='bagage--img' src="/bagage.png" width={15} height={16} alt="" /></div>                                                                <div className="promaline--data">
                                                                     <span className="p--title"><strong>{promotionsAsset.occasion}</strong></span>
                                                                     <span className="p--title"><a href="#" className="text-decoration-underline">{promotionsAsset.discount}% off {promotionsAsset.promotion_type}</a></span>
                                                                     <span className="p--title"><span>{promotionsAsset.promotion_details}</span> <span>{promotionsAsset.currency} </span> valid - <span>{promotionsAsset.promotion_start_date}</span> - <span>{promotionsAsset.promotion_end_date}</span></span>
@@ -849,11 +842,11 @@ function GoogleAddPreviewDetails() {
                                                             <div className="location--and--phone">
                                                                 {isLocationAsset &&
                                                                     <div className="location--asset">
-                                                                        <i className="fa-solid fa-location-dot"></i> <a href="#">{address}</a>
+                                                                        <Image className='map--img' src="/map--img.png" width={11} height={17} alt="" /> <a href="#">{address}</a>
                                                                     </div>}
                                                                 {isCallAsset &&
                                                                     <div className="location--asset">
-                                                                        <i className="fa-solid fa-phone"></i> <span className="p--title call--asset ms-1">{phoneNumber}</span>
+                                                                        <Image className='bagage--img phone--img' src="/phone--img.png" width={15} height={16} alt="" /> <span className="p--title call--asset ms-1">Call {phoneNumber}</span>
                                                                     </div>
                                                                 }
                                                             </div>
@@ -873,7 +866,7 @@ function GoogleAddPreviewDetails() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section >
         </>
     )
 }

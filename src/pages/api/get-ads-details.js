@@ -7,7 +7,6 @@ connectDB();
 export default async function handler(req, res) {
     try {
         const { id } = req.query;
-        console.log(id, "Chaurasia Ji")
         const ad = await Ad.findOne({ generatedID: id });
 
         if (!ad) {

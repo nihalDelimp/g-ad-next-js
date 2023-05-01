@@ -49,7 +49,16 @@ const adSchema = new Schema({
     message: String,
     advertiser_rating: Boolean,
     structured_snippets: structuredSnippetsSchema,
-    generatedID: { type: String, unique: true }
+    generatedID: { type: String, unique: true },
+    isSiteLinkHead:{ type: Boolean, default:false }, 
+    isSiteLinkDesc:{ type: Boolean, default:false },
+    isCallout:{ type: Boolean, default:false }, 
+    ispromotion:{ type: Boolean, default:false }, 
+    isAddPrice:{ type: Boolean, default:false }, 
+    isCallAsset:{ type: Boolean, default:false }, 
+    isLocationAsset:{ type: Boolean, default:false }, 
+    isMessageAsset:{ type: Boolean, default:false }, 
+    isSnippetsAsset:{ type: Boolean, default:false },
 });
 
 let Ad;

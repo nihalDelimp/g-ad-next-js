@@ -23,7 +23,16 @@ export default async function handler(req, res) {
             message: req.body.message,
             advertiser_rating: req.body.advertiser_rating,
             structured_snippets: req.body.structured_snippets,
-            generatedID: adId
+            generatedID: adId,
+            isSiteLinkHead:req.body.isSiteLinkHead, 
+            isSiteLinkDesc:req.body.isSiteLinkDesc,
+            isCallout:req.body.isCallout, 
+            ispromotion:req.body.ispromotion, 
+            isAddPrice:req.body.isAddPrice, 
+            isCallAsset:req.body.isCallAsset, 
+            isLocationAsset:req.body.isLocationAsset, 
+            isMessageAsset:req.body.isMessageAsset, 
+            isSnippetsAsset:req.body.isSnippetsAsset, 
         });
         console.log(req.body.final_url)
         await ad.save();

@@ -7,6 +7,7 @@ a {
 
 body {
   font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
 }
 
 input:focus, select:focus, textarea:focus {
@@ -132,6 +133,16 @@ input:focus, select:focus, textarea:focus {
   position: relative;
 
 }
+#topbar::before {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  height: 1px;
+  background-color: #ebebeb;
+  width: calc(100% + 140px);
+  left: -140px;
+  z-index: 1;
+}
 
 
 
@@ -246,7 +257,6 @@ html, body {
 }
 
 #searchresultsarea {
-  font-family: arial, helvetica, sans-serif;
   margin-top: 5px;
 }
 
@@ -284,7 +294,7 @@ html, body {
 
 .searchresult .ad--heading {
   font-size: 14px;
-  line-height: 14px;
+  line-height: 18px;
   color: #006621 !important;
   margin-bottom: 0px;
   margin-top: 10px;
@@ -346,9 +356,14 @@ html, body {
   font-size: 13px;
   margin-top: -4px;
   color: #545454;
-  margin-bottom: 5px;
+  margin: 0px !important;
 }
-
+.desktop-sec div {
+  line-height: 18px;
+}
+.px--20 {
+  padding-inline: 20px;
+}
 .relatedsearches h3 {
   font-weight: normal;
   font-size: 19px;
@@ -511,6 +526,7 @@ padding-left: 15px;
   line-height: 14px;
   vertical-align: baseline;
   margin-left: 0;
+  font-weight: 600;
   margin-right: 5px;
 }
 .mobile-inner .searchresult .searchresult {
@@ -540,9 +556,13 @@ padding-left: 15px;
   background-color: #3b78e7;
   padding: 3px;
   display: flex;
+  min-width: 40px;
 }
 .mobile--topbar .input--group .btn-search svg path {
   fill: #fff;
+}
+.mobile--topbar .input--group .btn-search img {
+  transform: scale(1.2);
 }
 .mob-captions {
   color: #757575;
@@ -554,7 +574,7 @@ padding-left: 15px;
 }
 .g--img {
   text-align: center;
-  padding: 17px 10px;
+  padding: 15px 10px;
 }
 .mob-captions .active--mob--cps {
   color: #1967d2;
@@ -607,9 +627,12 @@ color: #545454;
 }
 .price--asset {
   display: flex;
-  gap: 5px;
+  gap: 4px;
   overflow-x: auto;
   padding: 5px 3px 10px;
+}
+.price--asset .p--title {
+  color:#7a7a7a;
 }
 .price--asset .header--price--asset {
   width: 150px;
@@ -653,7 +676,7 @@ color: #545454;
   flex-flow: nowrap;
   gap: 5px;
   overflow: hidden;
-  padding: 3px 10px;
+  padding: 12px 10px;
 }
 .mobile-inner .price--asset .header--price--asset {
   width: 100px;
@@ -706,6 +729,9 @@ color: #545454;
   width: calc(100% + 30px);
   background-color: #eee;
 }
+.location--asset a {
+  font-size: 14px;
+}
 .location--wrapper--mb:after {
   top: auto;
   bottom: 0px;
@@ -713,8 +739,8 @@ color: #545454;
 .location--and--phone .location--asset {
   display: flex;
   align-items: center;
-  gap: 5px;
-  min-width: 90%;
+  gap: 8px;
+  min-width: 95%;
 }
 .location--and--phone .location--asset a {
   color: #545454;
@@ -723,14 +749,18 @@ color: #545454;
 .location--asset:first-child {
   border-right: 1px solid #dddada;
 }
+/* .phone--img{
+  position: absolute;
+} */
 .mb--message {
   display: flex;
   align-items: center;
   gap:5px;
-  padding: 5px 0;
+  padding: 0;
+  margin-top: 10px;
 }
 .mobile-inner .search-result {
-padding-top: 50px;
+padding-top: 0px;
 }
 .mobile-inner {
   height: calc(100% - 130px);
@@ -761,6 +791,28 @@ padding-top: 50px;
 }
 .fs--24 {
   font-size: clamp(18px, 2vw, 24px);
+}
+.mobile-inner .searchresult .ad--heading {
+color: #333333 !important;
+}
+.down--arrow {
+  width: 10px;
+  position: relative;
+  top: -1px;
+}
+.bell--img {
+  width: 12px;
+}
+.star--img {
+  position: relative;
+  top: 2px;
+  margin: 0 3px;
+}
+.bagage--img {
+  width: 15px;
+}
+.map--img{
+  width: 11px;
 }
 @media (max-width:1024px) {
   .pl--45 {

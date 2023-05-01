@@ -6,33 +6,33 @@ import { toast } from 'react-toastify';
 
 
 function GoogleAdPreview() {
-    const [finalUrl, setFinalUrl] = useState("https://example.com")
-    const [headlineForm, setHeadlineForm] = useState(['Make this headline count', 'And this one', `Don't forget this one`])
-    const [descriptionForm, setDescriptionForm] = useState(['Highlight Features of Your Service', 'description two'])
-    const [responseTrue, setresponseTrue] = useState(false)
-    const [siteLinkAsset, setSiteLinkAsset] = useState([{ headline: 'Show 1 headline', description_1: 'show description 1', description_2: 'show description 2' }, { headline: 'Show 2 headline', description_1: 'show description 1', description_2: 'show description 2' }, { headline: 'Show 3 headline', description_1: 'show description 1', description_2: 'show description 2' }, { headline: 'Show 3 headline', description_1: 'show description 1', description_2: 'show description 1' }])
-    const [calloutAsset, setCalloutAsset] = useState(['Additional Text for Ad', 'Product/Service Details', 'Highlight Offers', 'Show Additional Benefits'])
-    const [promotionsAsset, setPromotionsAsset] = useState({ occasion: '', currency: '', promotion_type: '', discount: '', automatic_domain_name: '', promotion_details: '', promotion_start_date: '', promotion_end_date: '' })
-    const [priceAsset, setPriceAsset] = useState({ currency: '$', price_qualifier: 'from' })
-    const [priceItems, setPriceItems] = useState([{ headline: 'headline 1', price: '10', description: 'description 1' }, { headline: 'headline 2', price: '20', description: 'description 2' }, { headline: 'headline 3', price: '30', description: 'description 3' }, { headline: 'headline 4', price: '40', description: 'description 4' }])
-    const [phoneNumber, setPhoneNumber] = useState('')
-    const [address, setAddress] = useState('21960 Minnetonka Blvd 100, Excelsior, MN 55331, United States.')
-    const [message, setMessage] = useState('Got Questions? Send Us a Text!')
-    const [advertiserRating, setAdvertiserRating] = useState(false)
-    const [structuredSnippets, setstructuredSnippets] = useState({ header: 'Barnds' })
-    const [snippetsItems, setSnippetsItems] = useState(['item 1', 'item 2', 'itwm 3'])
+    const[finalUrl, setFinalUrl] = useState("https://example.com")
+    const[headlineForm, setHeadlineForm] = useState(['Make this headline count', 'And this one', `Don't forget this one`])
+    const[descriptionForm, setDescriptionForm] = useState(['Highlight Features of Your Service', 'description two'])
+    const[responseTrue, setresponseTrue] = useState(false)
+    const[siteLinkAsset, setSiteLinkAsset] = useState([{ headline: 'Show 1 headline', description_1: 'show description 1', description_2: 'show description 2' }, { headline: 'Show 2 headline', description_1: 'show description 1', description_2: 'show description 2' }, { headline: 'Show 3 headline', description_1: 'show description 1', description_2: 'show description 2' }, { headline: 'Show 3 headline', description_1: 'show description 1', description_2: 'show description 1' }])
+    const[calloutAsset, setCalloutAsset] = useState(['Additional Text for Ad', 'Product/Service Details', 'Highlight Offers', 'Show Additional Benefits'])
+    const[promotionsAsset, setPromotionsAsset] = useState({ occasion: '', currency: '', promotion_type: '', discount: '', automatic_domain_name: '', promotion_details: '', promotion_start_date: '', promotion_end_date: '' })
+    const[priceAsset, setPriceAsset] = useState({ currency: '$', price_qualifier: 'from' })
+    const[priceItems, setPriceItems] = useState([{ headline: 'headline 1', price: '10', description: 'description 1' }, { headline: 'headline 2', price: '20', description: 'description 2' }, { headline: 'headline 3', price: '30', description: 'description 3' }, { headline: 'headline 4', price: '40', description: 'description 4' }])
+    const[phoneNumber, setPhoneNumber] = useState('')
+    const[address, setAddress] = useState('21960 Minnetonka Blvd 100, Excelsior, MN 55331, United States.')
+    const[message, setMessage] = useState('Got Questions? Send Us a Text!')
+    const[advertiserRating, setAdvertiserRating] = useState(false)
+    const[structuredSnippets, setstructuredSnippets] = useState({ header: 'Barnds' })
+    const[snippetsItems, setSnippetsItems] = useState(['item 1', 'item 2', 'itwm 3'])
 
 
-    const [isSiteLinkHead, setSiteLinkHead] = useState(false)
-    const [isSiteLinkDesc, setSiteLinkDesc] = useState(false)
-    const [isCallout, setCallout] = useState(false)
-    const [ispromotion, setPromotion] = useState(false)
-    const [isAddPrice, setAddPrice] = useState(false)
-    const [isCallAsset, setCallAsset] = useState(false)
-    const [isLocationAsset, setLocationAsset] = useState(false)
-    const [isMessageAsset, setMessageAsset] = useState(false)
-    const [isSnippetsAsset, setSnippetsAsset] = useState(false)
-    const [responseID, setResponseId] = useState("")
+    const[isSiteLinkHead, setSiteLinkHead] = useState(false)
+    const[isSiteLinkDesc, setSiteLinkDesc] = useState(false)
+    const[isCallout, setCallout] = useState(false)
+    const[ispromotion, setPromotion] = useState(false)
+    const[isAddPrice, setAddPrice] = useState(false)
+    const[isCallAsset, setCallAsset] = useState(false)
+    const[isLocationAsset, setLocationAsset] = useState(false)
+    const[isMessageAsset, setMessageAsset] = useState(false)
+    const[isSnippetsAsset, setSnippetsAsset] = useState(false)
+    const[responseID, setResponseId] = useState("")
 
 
 
@@ -126,7 +126,16 @@ function GoogleAdPreview() {
             address: address,
             message: message,
             advertiser_rating: advertiserRating,
-            structured_snippets: { ...structuredSnippets, snippetsItems }
+            structured_snippets: { ...structuredSnippets, snippetsItems },
+            isSiteLinkHead, 
+            isSiteLinkDesc,
+            isCallout, 
+            ispromotion, 
+            isAddPrice, 
+            isCallAsset, 
+            isLocationAsset, 
+            isMessageAsset, 
+            isSnippetsAsset, 
         };
         console.log(payload, "Payload")
         fetch('/api/save-new-ads', {
@@ -170,7 +179,7 @@ function GoogleAdPreview() {
                 <div className="container">
                     <div className="row">
                         <div className="col-12 col-md-6 pr--45">
-                            <div className="search--form--left">
+                            <div className="search--form--left  mt-3">
                                 <form action="/action_page.php">
                                     <div className="input-group mb-3">
                                         <span className="input-group-text">Final URL</span>
@@ -501,7 +510,7 @@ function GoogleAdPreview() {
                                     <div className="row ">
                                         <div className="col-12 alert-success p-4">
                                             <h4 className="fs--24">Copy and share the following URL: </h4>
-                                            <a className="text-black share--url" target="_blank" href={`/resources/googleadspreviewtool?id=${responseID}`}>{window.location.hostname}/resources/google-ads-preview-tool?id={responseID}</a>
+                                            <a className="text-black share--url" target="_blank" href={`/resources/adspreview?id=${responseID}`}>http://{window.location.hostname}/resources/adspreview?id={responseID}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -527,18 +536,14 @@ function GoogleAdPreview() {
                                     </div>
                                     <div id="searchresultsarea" className="search--resut--desktop">
                                         <div className="searchresult">
-                                            <span className="call--add"><a className="ad--heading"><span className="adtag--ad">Ad.&nbsp;</span>www.example.com/3-Headlines/2-Descriptions </a> {isCallAsset && <span className="p--title call--asset ms-1">{phoneNumber}</span>}</span>
-                                            <h2 className="fm--headline mt-1"><span>{headlineForm[0]}</span><span>{headlineForm[1]}</span><span>{headlineForm[2]}</span></h2>
+                                        <span className="call--add mt-1"><a className="ad--heading"><span className="adtag--ad">Ad&nbsp;·</span>www.example.com/3-Headlines/2-Descriptions <Image className='down--arrow' width = {10} height = {6} src="/down-arrow.png" alt="" /> </a> {isCallAsset && <span className="p--title call--asset ms-1">{phoneNumber}</span>}</span>
+                                            <h2 className="fm--headline mt-2"><span>{headlineForm[0]}</span><span>{headlineForm[1]}</span><span>{headlineForm[2]}</span></h2>
 
                                             {advertiserRating &&
                                                 <div className="advertiger--rating">
                                                     <span className="p--title">4</span>
                                                     <span className="advertiger--rating--span">
-                                                        <i className="fa-solid fa-star orange-star"></i>
-                                                        <i className="fa-solid fa-star orange-star"></i>
-                                                        <i className="fa-solid fa-star orange-star"></i>
-                                                        <i className="fa-solid fa-star orange-star"></i>
-                                                        <i className="fa-solid fa-star gray-star"></i>
+                                                        <Image className='star--img' src="/star--new.png" width={67} height={14} alt="" />
                                                     </span>
                                                     <span className="p--title">advertiser rating</span>
                                                 </div>
@@ -565,7 +570,7 @@ function GoogleAdPreview() {
                                                 </div>
                                             }
 
-                                            {isSiteLinkHead && <div className="row sitelink">
+                                            {isSiteLinkHead && <div className="row sitelink px--20 mt-2">
                                                 <div className="col-md-6 col-6">
                                                     <div className="fisrt--heading">
                                                         <a href="#">{siteLinkAsset[0].headline}</a>
@@ -615,12 +620,12 @@ function GoogleAdPreview() {
 
                                             {isLocationAsset &&
                                                 <div className="location--asset">
-                                                    <span className="p--title"><i className="fa-solid fa-location-dot"></i> <a href="#">{address}</a></span>
+                                                    <span className="p--title"><Image src="/location-icon.png" width={11} height={17} alt="" /> <a href="#">{address}</a></span>
                                                 </div>
                                             }
 
                                             {isAddPrice &&
-                                                <div className="price--asset">
+                                                <div className="price--asset ms-2 mt-1">
                                                     <div className="header--price--asset">
                                                         <div className="hd--text p--title">
                                                             {priceItems[0].headline}
@@ -682,17 +687,13 @@ function GoogleAdPreview() {
                                                 </div>
                                                 <div id="searchresultsarea">
                                                     <div className="searchresult">
-                                                        <span className="call--add"><a className="ad--heading"><span className="adtag--ad">Ad.&nbsp;</span>www.example.com/3-Headlines/2-Descriptions </a> </span>
+                                                    <span className="call--add row ms-1"><a className="ad--heading col-10"><span className="adtag--ad">Ad ·</span>www.example.com/3-Headlines/2-Descriptions </a> <span className='col-2 text-center mt-2'><Image className='bell--img' src="/bell.png" width={12}  height={13} alt="" /></span> </span>
                                                         <h2 className="fm--headline mt-1"><span>{headlineForm[0]}</span><span>{headlineForm[1]}</span><span>{headlineForm[2]}</span></h2>
                                                         {advertiserRating &&
                                                             <div className="advertiger--rating">
                                                                 <span className="p--title">4</span>
                                                                 <span className="advertiger--rating--span">
-                                                                    <i className="fa-solid fa-star orange-star"></i>
-                                                                    <i className="fa-solid fa-star orange-star"></i>
-                                                                    <i className="fa-solid fa-star orange-star"></i>
-                                                                    <i className="fa-solid fa-star orange-star"></i>
-                                                                    <i className="fa-solid fa-star gray-star"></i>
+                                                                    <Image className='star--img' src="/star--new.png" width={67} height={14} alt="" />
                                                                 </span>
                                                                 <span className="p--title">advertiser rating</span>
                                                             </div>
@@ -770,8 +771,7 @@ function GoogleAdPreview() {
 
                                                         {ispromotion &&
                                                             <div className="getpromoline ">
-                                                                <div className="tag--icon"><i className="fa-solid fa-tag"></i></div>
-                                                                <div className="promaline--data">
+                                                                <div className="tag--icon"><Image className='bagage--img' src="/bagage.png" width={15} height={16} alt="" /></div>                                                                <div className="promaline--data">
                                                                     <span className="p--title"><strong>{promotionsAsset.occasion}</strong></span>
                                                                     <span className="p--title"><a href="#" className="text-decoration-underline">{promotionsAsset.discount}% off {promotionsAsset.promotion_type}</a></span>
                                                                     <span className="p--title"><span>{promotionsAsset.promotion_details}</span> <span>{promotionsAsset.currency} </span> valid - <span>{promotionsAsset.promotion_start_date}</span> - <span>{promotionsAsset.promotion_end_date}</span></span>
@@ -783,11 +783,11 @@ function GoogleAdPreview() {
                                                             <div className="location--and--phone">
                                                                 {isLocationAsset &&
                                                                     <div className="location--asset">
-                                                                        <i className="fa-solid fa-location-dot"></i> <a href="#">{address}</a>
+                                                                        <Image className='map--img' src="/map--img.png" width={11} height={17} alt="" /> <a href="#">{address}</a>
                                                                     </div>}
                                                                 {isCallAsset &&
                                                                     <div className="location--asset">
-                                                                        <i className="fa-solid fa-phone"></i> <span className="p--title call--asset ms-1">{phoneNumber}</span>
+                                                                        <Image className='bagage--img phone--img' src="/phone--img.png" width={15} height={16} alt="" /> <span className="p--title call--asset ms-1">Call {phoneNumber}</span>
                                                                     </div>
                                                                 }
                                                             </div>
@@ -807,7 +807,7 @@ function GoogleAdPreview() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section >
         </>
     )
 }
