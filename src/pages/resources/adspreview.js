@@ -37,7 +37,6 @@ function GoogleAddPreviewDetails() {
     const [responseID, setResponseId] = useState("")
 
 
-
     const maxHeadLineLimit = 30
     const maxDescriptionLimit = 90
     const maxSiteLinkHeadLimit = 25
@@ -71,7 +70,17 @@ function GoogleAddPreviewDetails() {
                     message,
                     advertiser_rating,
                     price_asset,
-                    structured_snippets
+                    structured_snippets,
+                    isSiteLinkHead, 
+                    isSiteLinkDesc,
+                    isCallout, 
+                    ispromotion, 
+                    isAddPrice, 
+                    isCallAsset, 
+                    isLocationAsset, 
+                    isMessageAsset, 
+                    isSnippetsAsset,
+                    
                 } = resData;
 
                 const { header, snippetsItems } = structured_snippets;
@@ -97,6 +106,17 @@ function GoogleAddPreviewDetails() {
                 setAddress(address);
                 setMessage(message);
                 setAdvertiserRating(advertiser_rating);
+
+                setSiteLinkHead(isSiteLinkHead)
+                setSiteLinkDesc(isSiteLinkDesc)
+                setCallout(isCallout)
+                setPromotion(ispromotion)
+                setAddPrice(isAddPrice)
+                setCallAsset(isCallAsset)
+                setLocationAsset(isLocationAsset)
+                setMessageAsset(isMessageAsset)
+                setSnippetsAsset(isSnippetsAsset)
+
             } else {
                 const errorData = await response.json();
                 throw new Error(errorData.message);
@@ -221,6 +241,51 @@ function GoogleAddPreviewDetails() {
             });
     };
 
+    const handleResetForm = () => {
+        setHeadlineForm(['', '', ''])
+        setDescriptionForm(['', ''])
+        setSiteLinkAsset([
+            { headline: '', description_1: '', description_2: '' },
+            { headline: '', description_1: '', description_2: '' },
+            { headline: '', description_1: '', description_2: '' },
+            { headline: '', description_1: '', description_2: '' }])
+        setCalloutAsset(['', '', '', ''])
+        setPromotionsAsset({
+            occasion: '',
+            currency: '',
+            promotion_type: '',
+            discount: '',
+            automatic_domain_name: '',
+            promotion_details: '',
+            promotion_start_date: '',
+            promotion_end_date: ''
+        })
+        setPriceAsset({ currency: '', price_qualifier: '' })
+        setPriceItems([
+            { headline: '', price: '', description: '' },
+            { headline: '', price: '', description: '' },
+            { headline: '', price: '', description: '' },
+            { headline: '', price: '', description: '' }
+        ])
+        setPhoneNumber('')
+        setAddress('')
+        setMessage('')
+        setAdvertiserRating(false)
+        setstructuredSnippets({ header: '' })
+        setSnippetsItems(['', '', ''])
+        setSiteLinkHead(false)
+        setSiteLinkDesc(false)
+        setCallout(false)
+        setPromotion(false)
+        setAddPrice(false)
+        setCallAsset(false)
+        setLocationAsset(false)
+        setMessageAsset(false)
+        setSnippetsAsset(false)
+        setresponseTrue(false)
+        setResponseId("")
+    }
+
     return (
         <>
             <Script
@@ -238,7 +303,7 @@ function GoogleAddPreviewDetails() {
                 <div className="container">
                     <div className="row">
                         <div className="col-12 col-md-6 pr--45">
-                            <div className="search--form--left  mt-3">
+                            <div className="search--form--left mt-3">
                                 <form action="/action_page.php">
                                     <div className="input-group mb-3">
                                         <span className="input-group-text">Final URL</span>
@@ -275,7 +340,7 @@ function GoogleAddPreviewDetails() {
                                     <input type="checkbox" className="form-check-input" onChange={() => setSiteLinkHead(!isSiteLinkHead)} id="check2" name="option2" value="something" />
                                     <label className="form-check-label" for="check2">ADD SITELINK ASSETS</label>
                                 </div>
-                                <div className="tab--content">
+                                <div className={`tab--content ${isSiteLinkHead ? 'active' : ''}  `}>
                                     <div className="form-check tab--item--inner mb-3 pl-60">
                                         <input type="checkbox" className="form-check-input" onChange={() => setSiteLinkDesc(!isSiteLinkDesc)} id="check12" name="option12" value="something" />
                                         <label className="form-check-label" for="check12">ADD SITELINK ASSETS</label>
@@ -300,13 +365,13 @@ function GoogleAddPreviewDetails() {
                                             </div>
                                         </React.Fragment>
                                     )}
-
                                 </div>
+
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" onChange={() => setCallout(!isCallout)} className="form-check-input" id="check3" name="option3" value="something" />
                                     <label className="form-check-label" for="check3">ADD CALLOUT ASSETS</label>
                                 </div>
-                                <div className="tab--content">
+                                <div className={`tab--content ${isCallout ? 'active' : ''}`}>
                                     {calloutAsset.map((item, i) =>
                                         <div className="input-group mb-2" key={i}>
                                             <span className="input-group-text">Callout {i + 1}</span>
@@ -319,7 +384,7 @@ function GoogleAddPreviewDetails() {
                                     <input type="checkbox" onChange={() => setPromotion(!ispromotion)} className="form-check-input" id="check4" name="option4" value="something" />
                                     <label className="form-check-label" for="check4">ADD PROMOTIONS ASSET</label>
                                 </div>
-                                <div className="tab--content">
+                                <div className={`tab--content ${ispromotion ? 'active' : ''}`}>
                                     <div className="form-group row mb-3">
                                         <strong className="col-3">Occasion</strong>
                                         <div className="col-9">
@@ -450,7 +515,7 @@ function GoogleAddPreviewDetails() {
                                     <input type="checkbox" onChange={() => setAddPrice(!isAddPrice)} className="form-check-input" id="check5" name="option5" value="something" />
                                     <label className="form-check-label" for="check5">ADD PRICE ASSET</label>
                                 </div>
-                                <div className="tab--content">
+                                <div className={`tab--content ${isAddPrice ? 'active' : '' }`}>
                                     <div className="form-group row mb-3">
                                         <strong className="col-3">Currency</strong>
                                         <div className="col-9">
@@ -492,7 +557,7 @@ function GoogleAddPreviewDetails() {
                                     <input type="checkbox" onChange={() => setCallAsset(!isCallAsset)} className="form-check-input" id="check6" name="option6" value="something" />
                                     <label className="form-check-label" for="check6">ADD CALL ASSET</label>
                                 </div>
-                                <div className="tab--content">
+                                <div className={`tab--content ${isCallAsset ? 'active' : ''} `}>
                                     <div className="input-group mb-2">
                                         <span className="input-group-text">Phone Number</span>
                                         <input type="number" name="phoneNumber" onChange={(e) => setPhoneNumber(e.target.value)} className="form-control" placeholder="8001234567" />
@@ -503,7 +568,7 @@ function GoogleAddPreviewDetails() {
                                     <input type="checkbox" onChange={() => setLocationAsset(!isLocationAsset)} className="form-check-input" id="check7" name="option7" value="something" />
                                     <label className="form-check-label" for="check7">ADD LOCATION ASSETS</label>
                                 </div>
-                                <div className="tab--content">
+                                <div className={`tab--content  ${isLocationAsset ? 'active' : ''}`}>
                                     <div className="input-group mb-2">
                                         <span className="input-group-text">Address</span>
                                         <input type="text" name='address' value={address} onChange={(e) => setAddress(e.target.value)} className="form-control br--right" placeholder="" />
@@ -513,7 +578,7 @@ function GoogleAddPreviewDetails() {
                                     <input type="checkbox" onChange={() => setMessageAsset(!isMessageAsset)} className="form-check-input" id="check8" name="option8" value="something" />
                                     <label className="form-check-label" for="check8">ADD MESSAGE ASSETS</label>
                                 </div>
-                                <div className="tab--content">
+                                <div className={`tab--content ${isMessageAsset ? 'active' : ''} `}>
                                     <div className="input-group mb-2">
                                         <span className="input-group-text">Msg. Ext. Text</span>
                                         <input type="text" name='message' value={message} onChange={(e) => setMessage(e.target.value)} className="form-control" placeholder="Got Questions? Send Us a Text!" />
@@ -528,7 +593,7 @@ function GoogleAddPreviewDetails() {
                                     <input type="checkbox" onChange={() => setSnippetsAsset(!isSnippetsAsset)} className="form-check-input" id="check10" name="option10" value="something" />
                                     <label className="form-check-label" for="check10">ADD STRUCTURED SNIPPETS ASSET</label>
                                 </div>
-                                <div className="tab--content">
+                                <div className={`tab--content ${isSnippetsAsset ? 'active' : ''}`}>
                                     <div className="form-group row mb-3">
                                         <strong className="col-3">Header</strong>
                                         <div className="col-9">
@@ -561,7 +626,7 @@ function GoogleAddPreviewDetails() {
                                 </div>
                             </div>
                             <div className="form--actions">
-                                <button className="btn btn-warning w-100 text-white" type="button">RESET</button>
+                                <button className="btn btn-warning w-100 text-white" onClick = {handleResetForm} type="button">RESET</button>
                                 <button onClick={handleSubmit} className="btn btn-success text-white" type="button">SHARE THIS AD</button>
                             </div>
                             {responseTrue &&

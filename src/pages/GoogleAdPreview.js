@@ -162,6 +162,51 @@ function GoogleAdPreview() {
             });
     };
 
+    const handleResetForm = () => {
+        setHeadlineForm(['', '', ''])
+        setDescriptionForm(['', ''])
+        setSiteLinkAsset([
+            { headline: '', description_1: '', description_2: '' },
+            { headline: '', description_1: '', description_2: '' },
+            { headline: '', description_1: '', description_2: '' },
+            { headline: '', description_1: '', description_2: '' }])
+        setCalloutAsset(['', '', '', ''])
+        setPromotionsAsset({
+            occasion: '',
+            currency: '',
+            promotion_type: '',
+            discount: '',
+            automatic_domain_name: '',
+            promotion_details: '',
+            promotion_start_date: '',
+            promotion_end_date: ''
+        })
+        setPriceAsset({ currency: '', price_qualifier: '' })
+        setPriceItems([
+            { headline: '', price: '', description: '' },
+            { headline: '', price: '', description: '' },
+            { headline: '', price: '', description: '' },
+            { headline: '', price: '', description: '' }
+        ])
+        setPhoneNumber('')
+        setAddress('')
+        setMessage('')
+        setAdvertiserRating(false)
+        setstructuredSnippets({ header: '' })
+        setSnippetsItems(['', '', ''])
+        setSiteLinkHead(false)
+        setSiteLinkDesc(false)
+        setCallout(false)
+        setPromotion(false)
+        setAddPrice(false)
+        setCallAsset(false)
+        setLocationAsset(false)
+        setMessageAsset(false)
+        setSnippetsAsset(false)
+        setresponseTrue(false)
+        setResponseId("")
+    }
+
     return (
         <>
             <Script
@@ -502,7 +547,7 @@ function GoogleAdPreview() {
                                 </div>
                             </div>
                             <div className="form--actions">
-                                <button className="btn btn-warning w-100 text-white" type="button">RESET</button>
+                                <button className="btn btn-warning w-100 text-white" onClick = {handleResetForm} type="button">RESET</button>
                                 <button onClick={handleSubmit} className="btn btn-success text-white" type="button">SHARE THIS AD</button>
                             </div>
                             {responseTrue &&
