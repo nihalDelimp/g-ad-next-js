@@ -71,16 +71,16 @@ function GoogleAddPreviewDetails() {
                     advertiser_rating,
                     price_asset,
                     structured_snippets,
-                    isSiteLinkHead, 
+                    isSiteLinkHead,
                     isSiteLinkDesc,
-                    isCallout, 
-                    ispromotion, 
-                    isAddPrice, 
-                    isCallAsset, 
-                    isLocationAsset, 
-                    isMessageAsset, 
+                    isCallout,
+                    ispromotion,
+                    isAddPrice,
+                    isCallAsset,
+                    isLocationAsset,
+                    isMessageAsset,
                     isSnippetsAsset,
-                    
+
                 } = resData;
 
                 const { header, snippetsItems } = structured_snippets;
@@ -207,14 +207,14 @@ function GoogleAddPreviewDetails() {
             message: message,
             advertiser_rating: advertiserRating,
             structured_snippets: { ...structuredSnippets, snippetsItems },
-            isSiteLinkHead, 
+            isSiteLinkHead,
             isSiteLinkDesc,
-            isCallout, 
-            ispromotion, 
-            isAddPrice, 
-            isCallAsset, 
-            isLocationAsset, 
-            isMessageAsset, 
+            isCallout,
+            ispromotion,
+            isAddPrice,
+            isCallAsset,
+            isLocationAsset,
+            isMessageAsset,
             isSnippetsAsset,
         };
         // setLoading(true);
@@ -337,12 +337,12 @@ function GoogleAddPreviewDetails() {
                             </div>
                             <div className="checkbox--form--group mt-4">
                                 <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" className="form-check-input" checked = {isSiteLinkHead} onChange={() => setSiteLinkHead(!isSiteLinkHead)} id="check2" name="option2" value="something" />
+                                    <input type="checkbox" className="form-check-input" checked={isSiteLinkHead} onChange={() => setSiteLinkHead(!isSiteLinkHead)} id="check2" name="option2" value="something" />
                                     <label className="form-check-label" for="check2">ADD SITELINK ASSETS</label>
                                 </div>
                                 <div className={`tab--content ${isSiteLinkHead ? 'active' : ''}  `}>
                                     <div className="form-check tab--item--inner mb-3 pl-60">
-                                        <input type="checkbox" className="form-check-input" checked = {isSiteLinkDesc} onChange={() => setSiteLinkDesc(!isSiteLinkDesc)} id="check12" name="option12" value="something" />
+                                        <input type="checkbox" className="form-check-input" checked={isSiteLinkDesc} onChange={() => setSiteLinkDesc(!isSiteLinkDesc)} id="check12" name="option12" value="something" />
                                         <label className="form-check-label" for="check12">ADD SITELINK ASSETS</label>
                                     </div>
 
@@ -368,7 +368,7 @@ function GoogleAddPreviewDetails() {
                                 </div>
 
                                 <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" checked = {isCallout} onChange={() => setCallout(!isCallout)} className="form-check-input" id="check3" name="option3" value="something" />
+                                    <input type="checkbox" checked={isCallout} onChange={() => setCallout(!isCallout)} className="form-check-input" id="check3" name="option3" value="something" />
                                     <label className="form-check-label" for="check3">ADD CALLOUT ASSETS</label>
                                 </div>
                                 <div className={`tab--content ${isCallout ? 'active' : ''}`}>
@@ -381,7 +381,7 @@ function GoogleAddPreviewDetails() {
                                     )}
                                 </div>
                                 <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" checked = {ispromotion} onChange={() => setPromotion(!ispromotion)} className="form-check-input" id="check4" name="option4" value="something" />
+                                    <input type="checkbox" checked={ispromotion} onChange={() => setPromotion(!ispromotion)} className="form-check-input" id="check4" name="option4" value="something" />
                                     <label className="form-check-label" for="check4">ADD PROMOTIONS ASSET</label>
                                 </div>
                                 <div className={`tab--content ${ispromotion ? 'active' : ''}`}>
@@ -512,10 +512,10 @@ function GoogleAddPreviewDetails() {
                                     </div>
                                 </div>
                                 <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" checked = {isAddPrice} onChange={() => setAddPrice(!isAddPrice)} className="form-check-input" id="check5" name="option5" value="something" />
+                                    <input type="checkbox" checked={isAddPrice} onChange={() => setAddPrice(!isAddPrice)} className="form-check-input" id="check5" name="option5" value="something" />
                                     <label className="form-check-label" for="check5">ADD PRICE ASSET</label>
                                 </div>
-                                <div className={`tab--content ${isAddPrice ? 'active' : '' }`}>
+                                <div className={`tab--content ${isAddPrice ? 'active' : ''}`}>
                                     <div className="form-group row mb-3">
                                         <strong className="col-3">Currency</strong>
                                         <div className="col-9">
@@ -554,18 +554,18 @@ function GoogleAddPreviewDetails() {
                                         )}
                                 </div>
                                 <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" checked = {isCallAsset} onChange={() => setCallAsset(!isCallAsset)} className="form-check-input" id="check6" name="option6" value="something" />
+                                    <input type="checkbox" checked={isCallAsset} onChange={() => setCallAsset(!isCallAsset)} className="form-check-input" id="check6" name="option6" value="something" />
                                     <label className="form-check-label" for="check6">ADD CALL ASSET</label>
                                 </div>
                                 <div className={`tab--content ${isCallAsset ? 'active' : ''} `}>
                                     <div className="input-group mb-2">
                                         <span className="input-group-text">Phone Number</span>
-                                        <input type="number" name="phoneNumber" onChange={(e) => setPhoneNumber(e.target.value)} className="form-control" placeholder="8001234567" />
+                                        <input type="number" name="phoneNumber" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} className="form-control" placeholder="8001234567" />
                                         <span className={`input-group-text ${maxPhoneLimit - phoneNumber.length >= 0 ? 'alert-success' : 'alert-danger'} `}>{maxPhoneLimit - phoneNumber.length}</span>
                                     </div>
                                 </div>
                                 <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" checked = {isLocationAsset} onChange={() => setLocationAsset(!isLocationAsset)} className="form-check-input" id="check7" name="option7" value="something" />
+                                    <input type="checkbox" checked={isLocationAsset} onChange={() => setLocationAsset(!isLocationAsset)} className="form-check-input" id="check7" name="option7" value="something" />
                                     <label className="form-check-label" for="check7">ADD LOCATION ASSETS</label>
                                 </div>
                                 <div className={`tab--content  ${isLocationAsset ? 'active' : ''}`}>
@@ -575,7 +575,7 @@ function GoogleAddPreviewDetails() {
                                     </div>
                                 </div>
                                 <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" checked = {isMessageAsset} onChange={() => setMessageAsset(!isMessageAsset)} className="form-check-input" id="check8" name="option8" value="something" />
+                                    <input type="checkbox" checked={isMessageAsset} onChange={() => setMessageAsset(!isMessageAsset)} className="form-check-input" id="check8" name="option8" value="something" />
                                     <label className="form-check-label" for="check8">ADD MESSAGE ASSETS</label>
                                 </div>
                                 <div className={`tab--content ${isMessageAsset ? 'active' : ''} `}>
@@ -590,7 +590,7 @@ function GoogleAddPreviewDetails() {
                                     <label className="form-check-label" for="check9">SHOW ADVERTISER RATING</label>
                                 </div>
                                 <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" checked = {isSnippetsAsset} onChange={() => setSnippetsAsset(!isSnippetsAsset)} className="form-check-input" id="check10" name="option10" value="something" />
+                                    <input type="checkbox" checked={isSnippetsAsset} onChange={() => setSnippetsAsset(!isSnippetsAsset)} className="form-check-input" id="check10" name="option10" value="something" />
                                     <label className="form-check-label" for="check10">ADD STRUCTURED SNIPPETS ASSET</label>
                                 </div>
                                 <div className={`tab--content ${isSnippetsAsset ? 'active' : ''}`}>
@@ -626,7 +626,7 @@ function GoogleAddPreviewDetails() {
                                 </div>
                             </div>
                             <div className="form--actions">
-                                <button className="btn btn-warning w-100 text-white" onClick = {handleResetForm} type="button">RESET</button>
+                                <button className="btn btn-warning w-100 text-white" onClick={handleResetForm} type="button">RESET</button>
                                 <button onClick={handleSubmit} className="btn btn-success text-white" type="button">SHARE THIS AD</button>
                             </div>
                             {responseTrue &&
@@ -660,10 +660,10 @@ function GoogleAddPreviewDetails() {
                                     </div>
                                     <div id="searchresultsarea" className="search--resut--desktop">
                                         <div className="searchresult">
-                                        <span className="call--add mt-1"><a className="ad--heading"><span className="adtag--ad">Ad&nbsp;·</span>{finalUrl}<Image className='down--arrow' width = {10} height = {6} src="/down-arrow.png" alt="" /> </a> {isCallAsset && <span className="p--title call--asset ms-1">{phoneNumber}</span>}</span>
-                                        {(headlineForm[0] || headlineForm[1] || headlineForm[2] ) &&
-                                            <h2 className="fm--headline mt-2"><span>{headlineForm[0]}</span><span>{headlineForm[1]}</span><span>{headlineForm[2]}</span></h2>
-                                        }
+                                            <span className="call--add mt-1"><a className="ad--heading"><span className="adtag--ad">Ad&nbsp;·</span>{finalUrl}<Image className='down--arrow' width={10} height={6} src="/down-arrow.png" alt="" /> </a> {isCallAsset && <span className="p--title call--asset ms-1">{phoneNumber}</span>}</span>
+                                            {(headlineForm[0] || headlineForm[1] || headlineForm[2]) &&
+                                                <h2 className="fm--headline mt-2"><span>{headlineForm[0]}</span><span>{headlineForm[1]}</span><span>{headlineForm[2]}</span></h2>
+                                            }
                                             {advertiserRating &&
                                                 <div className="advertiger--rating">
                                                     <span className="p--title">4</span>
@@ -812,10 +812,10 @@ function GoogleAddPreviewDetails() {
                                                 </div>
                                                 <div id="searchresultsarea">
                                                     <div className="searchresult">
-                                                    <span className="call--add row ms-1"><a className="ad--heading col-10"><span className="adtag--ad">Ad ·</span>{finalUrl}</a> <span className='col-2 text-center mt-2'><Image className='bell--img' src="/bell.png" width={12}  height={13} alt="" /></span> </span>
-                                                    {(headlineForm[0] || headlineForm[1] || headlineForm[2] ) &&
-                                                        <h2 className="fm--headline mt-1"><span>{headlineForm[0]}</span><span>{headlineForm[1]}</span><span>{headlineForm[2]}</span></h2>
-                                                    }
+                                                        <span className="call--add row ms-1"><a className="ad--heading col-10"><span className="adtag--ad">Ad ·</span>{finalUrl}</a> <span className='col-2 text-center mt-2'><Image className='bell--img' src="/bell.png" width={12} height={13} alt="" /></span> </span>
+                                                        {(headlineForm[0] || headlineForm[1] || headlineForm[2]) &&
+                                                            <h2 className="fm--headline mt-1"><span>{headlineForm[0]}</span><span>{headlineForm[1]}</span><span>{headlineForm[2]}</span></h2>
+                                                        }
                                                         {advertiserRating &&
                                                             <div className="advertiger--rating">
                                                                 <span className="p--title">4</span>
