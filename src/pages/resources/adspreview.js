@@ -660,9 +660,10 @@ function GoogleAddPreviewDetails() {
                                     </div>
                                     <div id="searchresultsarea" className="search--resut--desktop">
                                         <div className="searchresult">
-                                        <span className="call--add mt-1"><a className="ad--heading"><span className="adtag--ad">Ad&nbsp;·</span>www.example.com/3-Headlines/2-Descriptions <Image className='down--arrow' width = {10} height = {6} src="/down-arrow.png" alt="" /> </a> {isCallAsset && <span className="p--title call--asset ms-1">{phoneNumber}</span>}</span>
+                                        <span className="call--add mt-1"><a className="ad--heading"><span className="adtag--ad">Ad&nbsp;·</span>{finalUrl}<Image className='down--arrow' width = {10} height = {6} src="/down-arrow.png" alt="" /> </a> {isCallAsset && <span className="p--title call--asset ms-1">{phoneNumber}</span>}</span>
+                                        {(headlineForm[0] || headlineForm[1] || headlineForm[2] ) &&
                                             <h2 className="fm--headline mt-2"><span>{headlineForm[0]}</span><span>{headlineForm[1]}</span><span>{headlineForm[2]}</span></h2>
-
+                                        }
                                             {advertiserRating &&
                                                 <div className="advertiger--rating">
                                                     <span className="p--title">4</span>
@@ -811,8 +812,10 @@ function GoogleAddPreviewDetails() {
                                                 </div>
                                                 <div id="searchresultsarea">
                                                     <div className="searchresult">
-                                                    <span className="call--add row ms-1"><a className="ad--heading col-10"><span className="adtag--ad">Ad ·</span>{{finalUrl}}</a> <span className='col-2 text-center mt-2'><Image className='bell--img' src="/bell.png" width={12}  height={13} alt="" /></span> </span>
+                                                    <span className="call--add row ms-1"><a className="ad--heading col-10"><span className="adtag--ad">Ad ·</span>{finalUrl}</a> <span className='col-2 text-center mt-2'><Image className='bell--img' src="/bell.png" width={12}  height={13} alt="" /></span> </span>
+                                                    {(headlineForm[0] || headlineForm[1] || headlineForm[2] ) &&
                                                         <h2 className="fm--headline mt-1"><span>{headlineForm[0]}</span><span>{headlineForm[1]}</span><span>{headlineForm[2]}</span></h2>
+                                                    }
                                                         {advertiserRating &&
                                                             <div className="advertiger--rating">
                                                                 <span className="p--title">4</span>
