@@ -679,7 +679,12 @@ color: #545454;
   overflow: hidden;
   padding: 12px 10px;
   margin-right: 0px;
+  overflow-x: auto;
 }
+.mobile-inner .sitelink::-webkit-scrollbar {
+  height: 0px;
+}
+
 .mobile-inner .price--asset .header--price--asset {
   width: 118px;
   min-width: 118px;
@@ -695,6 +700,10 @@ color: #545454;
     padding-left: 13px;
     width: calc(100% + 20px);
     padding-top: 10px;
+    overflow-x: auto;
+}
+.mobile-inner .price--asset::-webkit-scrollbar {
+  height: 0px;
 }
 .mobile-inner .getpromoline {
   display: flex;
@@ -721,8 +730,11 @@ color: #545454;
   display: flex;
   gap: 13px;
   overflow: hidden;
-  
+  overflow-x: auto;
   padding: 7px 0;
+}
+.location--and--phone::-webkit-scrollbar {
+  height: 0px;
 }
 .location--wrapper--mb {
   position: relative;
