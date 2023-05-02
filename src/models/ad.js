@@ -9,8 +9,8 @@ const promotionSchema = new Schema({
     discount: String,
     automatic_domain_name: String,
     promotion_details: String,
-    promotion_start_date: Date,
-    promotion_end_date: Date
+    promotion_start_date: String,
+    promotion_end_date: String
 });
 
 const priceItemSchema = new Schema({
@@ -50,15 +50,15 @@ const adSchema = new Schema({
     advertiser_rating: Boolean,
     structured_snippets: structuredSnippetsSchema,
     generatedID: { type: String, unique: true },
-    isSiteLinkHead:{ type: Boolean, default:false }, 
-    isSiteLinkDesc:{ type: Boolean, default:false },
-    isCallout:{ type: Boolean, default:false }, 
-    ispromotion:{ type: Boolean, default:false }, 
-    isAddPrice:{ type: Boolean, default:false }, 
-    isCallAsset:{ type: Boolean, default:false }, 
-    isLocationAsset:{ type: Boolean, default:false }, 
-    isMessageAsset:{ type: Boolean, default:false }, 
-    isSnippetsAsset:{ type: Boolean, default:false },
+    isSiteLinkHead: { type: Boolean, default: false },
+    isSiteLinkDesc: { type: Boolean, default: false },
+    isCallout: { type: Boolean, default: false },
+    ispromotion: { type: Boolean, default: false },
+    isAddPrice: { type: Boolean, default: false },
+    isCallAsset: { type: Boolean, default: false },
+    isLocationAsset: { type: Boolean, default: false },
+    isMessageAsset: { type: Boolean, default: false },
+    isSnippetsAsset: { type: Boolean, default: false },
 });
 
 let Ad;

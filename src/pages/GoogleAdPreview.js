@@ -232,8 +232,9 @@ function GoogleAdPreview() {
                                     </div>
                                 </form>
                             </div>
-                            <div className="headline--box mb-3">
-                                <h3 className="title--sm mb-3">Headlines</h3>
+                            <div className="headline--box">
+                                <h3 className="title--sm mb-0">Headlines</h3>
+                                <p>Use up to 30 characters</p>
                                 <div className="headline--inputs">
                                     {headlineForm.map((item, i) =>
                                         <div className="input-group mb-2" key={i}>
@@ -245,7 +246,8 @@ function GoogleAdPreview() {
                                 </div>
                             </div>
                             <div className="headline--box">
-                                <h3 className="title--sm mb-3">DESCRIPTIONS</h3>
+                                <h3 className="title--sm mb-0">DESCRIPTIONS</h3>
+                                <p>Use up to 90 characters</p>
                                 <div className="headline--inputs">
                                     {descriptionForm.map((item, i) =>
                                         <div className="input-group mb-2" key={i}>
@@ -711,7 +713,7 @@ function GoogleAdPreview() {
                                                 <div id="header">
                                                     <div className="search-result">
                                                         <div className="g--img">
-                                                            <Image id="searchbarimage" src="/googlelogo_color_120x44dp.png" alt="Google logo" width={120} height={44} />
+                                                            <Image id="searchbarimage" src="/googlelogo_color_120x44dp.png" alt="Google logo" width={100} height={35} />
                                                             {/* <img id="searchbarimage" src={require("./image/googlelogo_color_120x44dp.png")} /> */}
                                                         </div>
                                                         <div className="mobile--topbar">
@@ -836,7 +838,7 @@ function GoogleAdPreview() {
                                                                     </div>}
                                                                 {isCallAsset &&
                                                                     <div className="location--asset">
-                                                                        <Image className='bagage--img phone--img' src="/phone--img.png" width={15} height={16} alt="" /> <span className="p--title call--asset ms-1">Call {phoneNumber}</span>
+                                                                        <Image className='bagage--img phone--img' src="/phone--img.png" width={15} height={16} alt="" /> <span className="p--title call--asset ms-1"> {phoneNumber}</span>
                                                                     </div>
                                                                 }
                                                             </div>
