@@ -830,7 +830,8 @@ function GoogleAdPreview() {
                                                             </div>
                                                         }
 
-                                                        <div className="location--wrapper--mb">
+                                                     { (isLocationAsset || isCallAsset ) &&
+                                                        <div className="location--wrapper--mb">              
                                                             <div className="location--and--phone">
                                                                 {isLocationAsset &&
                                                                     <div className="location--asset">
@@ -843,6 +844,7 @@ function GoogleAdPreview() {
                                                                 }
                                                             </div>
                                                         </div>
+                                                      }
 
                                                         {isMessageAsset &&
                                                             <div className="mb--message">
