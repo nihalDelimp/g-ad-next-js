@@ -7,8 +7,8 @@ import { toast } from 'react-toastify';
 
 function GoogleAdPreview() {
     const[finalUrl, setFinalUrl] = useState("https://example.com")
-    const[headlineForm, setHeadlineForm] = useState(['Make this headline count', 'And this one', `Don't forget this one`])
-    const[descriptionForm, setDescriptionForm] = useState(['Highlight Features of Your Service', 'description two'])
+    const[headlineForm, setHeadlineForm] = useState(['Google Ads Preview Tool', 'Explore New Campaign Ideas', 'Master Google Ads Writing'])
+    const[descriptionForm, setDescriptionForm] = useState(['Work through new ad ideas and see a preview of how it would look if your ad was live.', 'Easily share your ad with others or keep a copy for yourself with the link below.'])
     const[responseTrue, setresponseTrue] = useState(false)
     const[siteLinkAsset, setSiteLinkAsset] = useState([{ headline: 'Show 1 headline', description_1: 'show description 1', description_2: 'show description 2' }, { headline: 'Show 2 headline', description_1: 'show description 1', description_2: 'show description 2' }, { headline: 'Show 3 headline', description_1: 'show description 1', description_2: 'show description 2' }, { headline: 'Show 3 headline', description_1: 'show description 1', description_2: 'show description 1' }])
     const[calloutAsset, setCalloutAsset] = useState(['Additional Text for Ad', 'Product/Service Details', 'Highlight Offers', 'Show Additional Benefits'])
@@ -16,7 +16,7 @@ function GoogleAdPreview() {
     const[priceAsset, setPriceAsset] = useState({ currency: '$', price_qualifier: 'from' })
     const[priceItems, setPriceItems] = useState([{ headline: 'headline 1', price: '10', description: 'description 1' }, { headline: 'headline 2', price: '20', description: 'description 2' }, { headline: 'headline 3', price: '30', description: 'description 3' }, { headline: 'headline 4', price: '40', description: 'description 4' }])
     const[phoneNumber, setPhoneNumber] = useState('')
-    const[address, setAddress] = useState('21960 Minnetonka Blvd 100, Excelsior, MN 55331, United States.')
+    const[address, setAddress] = useState('21960 Minnetonka Blvd 100, Excelsior')
     const[message, setMessage] = useState('Got Questions? Send Us a Text!')
     const[advertiserRating, setAdvertiserRating] = useState(false)
     const[structuredSnippets, setstructuredSnippets] = useState({ header: 'Barnds' })
@@ -163,8 +163,8 @@ function GoogleAdPreview() {
     };
 
     const handleResetForm = () => {
-        setHeadlineForm(['', '', ''])
-        setDescriptionForm(['', ''])
+        setHeadlineForm(['Google Ads Preview Tool', 'Explore New Campaign Ideas', 'Master Google Ads Writing'])
+        setDescriptionForm(['Google Ads Preview Tool', 'Explore New Campaign Ideas', 'Master Google Ads Writing'])
         setSiteLinkAsset([
             { headline: '', description_1: '', description_2: '' },
             { headline: '', description_1: '', description_2: '' },
@@ -234,7 +234,7 @@ function GoogleAdPreview() {
                             </div>
                             <div className="headline--box">
                                 <h3 className="title--sm mb-0">Headlines</h3>
-                                <p>Use up to 30 characters</p>
+                                <p>(Use up to 30 characters)</p>
                                 <div className="headline--inputs">
                                     {headlineForm.map((item, i) =>
                                         <div className="input-group mb-2" key={i}>
@@ -247,7 +247,7 @@ function GoogleAdPreview() {
                             </div>
                             <div className="headline--box">
                                 <h3 className="title--sm mb-0">DESCRIPTIONS</h3>
-                                <p>Use up to 90 characters</p>
+                                <p>(Use up to 90 characters)</p>
                                 <div className="headline--inputs">
                                     {descriptionForm.map((item, i) =>
                                         <div className="input-group mb-2" key={i}>
