@@ -9,8 +9,8 @@ function GoogleAddPreviewDetails() {
     const router = useRouter();
     const { id } = router.query;
     const [finalUrl, setFinalUrl] = useState("https://example.com")
-    const[headlineForm, setHeadlineForm] = useState(['Google Ads Preview Tool', 'Explore New Campaign Ideas', 'Master Google Ads Writing'])
-    const[descriptionForm, setDescriptionForm] = useState(['Work through new ad ideas and see a preview of how it would look if your ad was live.', 'Easily share your ad with others or keep a copy for yourself with the link below.'])
+    const [headlineForm, setHeadlineForm] = useState(['Google Ads Preview Tool', 'Explore New Campaign Ideas', 'Master Google Ads Writing'])
+    const [descriptionForm, setDescriptionForm] = useState(['Work through new ad ideas and see a preview of how it would look if your ad was live.', 'Easily share your ad with others or keep a copy for yourself with the link below.'])
     const [responseTrue, setresponseTrue] = useState(false)
     const [siteLinkAsset, setSiteLinkAsset] = useState([{ headline: 'Show 1 headline', description_1: 'show description 1', description_2: 'show description 2' }, { headline: 'Show 2 headline', description_1: 'show description 1', description_2: 'show description 2' }, { headline: 'Show 3 headline', description_1: 'show description 1', description_2: 'show description 2' }, { headline: 'Show 3 headline', description_1: 'show description 1', description_2: 'show description 1' }])
     const [calloutAsset, setCalloutAsset] = useState(['Additional Text for Ad', 'Product/Service Details', 'Highlight Offers', 'Show Additional Benefits'])
@@ -35,6 +35,8 @@ function GoogleAddPreviewDetails() {
     const [isMessageAsset, setMessageAsset] = useState(false)
     const [isSnippetsAsset, setSnippetsAsset] = useState(false)
     const [responseID, setResponseId] = useState("")
+    const [loader, setLoader] = useState(false)
+
 
 
     const maxHeadLineLimit = 30
@@ -217,7 +219,8 @@ function GoogleAddPreviewDetails() {
             isMessageAsset,
             isSnippetsAsset,
         };
-        // setLoading(true);
+        setLoader(true)
+        setresponseTrue(false)
         fetch('/api/save-new-ads', {
             method: 'POST',
             headers: {
@@ -225,7 +228,10 @@ function GoogleAddPreviewDetails() {
             },
             body: JSON.stringify(payload)
         })
-            .then(response => response.json())
+            .then(response => {
+                setLoader(false)
+                return response.json();
+            })
             .then(data => {
                 if (data.id) {
                     // toast.success('Ads Saved');
@@ -236,6 +242,7 @@ function GoogleAddPreviewDetails() {
                 }
             })
             .catch(error => {
+                setLoader(false)
                 toast.error(error.message);
                 console.log(error);
             });
@@ -299,7 +306,7 @@ function GoogleAddPreviewDetails() {
                     });
                 }}
             />
-             <section className="form--area">
+            <section className="form--area">
                 <div className="container">
                     <div className="row">
                         <div className="col-12 col-md-6 pr--45">
@@ -339,12 +346,12 @@ function GoogleAddPreviewDetails() {
                             </div>
                             <div className="checkbox--form--group mt-4">
                                 <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" className="form-check-input" checked = {isSiteLinkHead} onChange={() => setSiteLinkHead(!isSiteLinkHead)} id="check2" name="option2" value="something" />
+                                    <input type="checkbox" className="form-check-input" checked={isSiteLinkHead} onChange={() => setSiteLinkHead(!isSiteLinkHead)} id="check2" name="option2" value="something" />
                                     <label className="form-check-label" for="check2">ADD SITELINK ASSETS</label>
                                 </div>
                                 <div className={`tab--content ${isSiteLinkHead ? 'active' : ''}  `}>
                                     <div className="form-check tab--item--inner mb-3 pl-60">
-                                        <input type="checkbox" className="form-check-input" checked = {isSiteLinkDesc} onChange={() => setSiteLinkDesc(!isSiteLinkDesc)} id="check12" name="option12" value="something" />
+                                        <input type="checkbox" className="form-check-input" checked={isSiteLinkDesc} onChange={() => setSiteLinkDesc(!isSiteLinkDesc)} id="check12" name="option12" value="something" />
                                         <label className="form-check-label" for="check12">ADD SITELINK ASSETS</label>
                                     </div>
 
@@ -370,7 +377,7 @@ function GoogleAddPreviewDetails() {
                                 </div>
 
                                 <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" checked = {isCallout} onChange={() => setCallout(!isCallout)} className="form-check-input" id="check3" name="option3" value="something" />
+                                    <input type="checkbox" checked={isCallout} onChange={() => setCallout(!isCallout)} className="form-check-input" id="check3" name="option3" value="something" />
                                     <label className="form-check-label" for="check3">ADD CALLOUT ASSETS</label>
                                 </div>
                                 <div className={`tab--content ${isCallout ? 'active' : ''}`}>
@@ -383,7 +390,7 @@ function GoogleAddPreviewDetails() {
                                     )}
                                 </div>
                                 <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" checked = {ispromotion} onChange={() => setPromotion(!ispromotion)} className="form-check-input" id="check4" name="option4" value="something" />
+                                    <input type="checkbox" checked={ispromotion} onChange={() => setPromotion(!ispromotion)} className="form-check-input" id="check4" name="option4" value="something" />
                                     <label className="form-check-label" for="check4">ADD PROMOTIONS ASSET</label>
                                 </div>
                                 <div className={`tab--content ${ispromotion ? 'active' : ''}`}>
@@ -514,10 +521,10 @@ function GoogleAddPreviewDetails() {
                                     </div>
                                 </div>
                                 <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" checked = {isAddPrice} onChange={() => setAddPrice(!isAddPrice)} className="form-check-input" id="check5" name="option5" value="something" />
+                                    <input type="checkbox" checked={isAddPrice} onChange={() => setAddPrice(!isAddPrice)} className="form-check-input" id="check5" name="option5" value="something" />
                                     <label className="form-check-label" for="check5">ADD PRICE ASSET</label>
                                 </div>
-                                <div className={`tab--content ${isAddPrice ? 'active' : '' }`}>
+                                <div className={`tab--content ${isAddPrice ? 'active' : ''}`}>
                                     <div className="form-group row mb-3">
                                         <strong className="col-3">Currency</strong>
                                         <div className="col-9">
@@ -556,7 +563,7 @@ function GoogleAddPreviewDetails() {
                                         )}
                                 </div>
                                 <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" checked = {isCallAsset} onChange={() => setCallAsset(!isCallAsset)} className="form-check-input" id="check6" name="option6" value="something" />
+                                    <input type="checkbox" checked={isCallAsset} onChange={() => setCallAsset(!isCallAsset)} className="form-check-input" id="check6" name="option6" value="something" />
                                     <label className="form-check-label" for="check6">ADD CALL ASSET</label>
                                 </div>
                                 <div className={`tab--content ${isCallAsset ? 'active' : ''} `}>
@@ -567,7 +574,7 @@ function GoogleAddPreviewDetails() {
                                     </div>
                                 </div>
                                 <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" checked = {isLocationAsset} onChange={() => setLocationAsset(!isLocationAsset)} className="form-check-input" id="check7" name="option7" value="something" />
+                                    <input type="checkbox" checked={isLocationAsset} onChange={() => setLocationAsset(!isLocationAsset)} className="form-check-input" id="check7" name="option7" value="something" />
                                     <label className="form-check-label" for="check7">ADD LOCATION ASSETS</label>
                                 </div>
                                 <div className={`tab--content  ${isLocationAsset ? 'active' : ''}`}>
@@ -577,7 +584,7 @@ function GoogleAddPreviewDetails() {
                                     </div>
                                 </div>
                                 <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" checked = {isMessageAsset} onChange={() => setMessageAsset(!isMessageAsset)} className="form-check-input" id="check8" name="option8" value="something" />
+                                    <input type="checkbox" checked={isMessageAsset} onChange={() => setMessageAsset(!isMessageAsset)} className="form-check-input" id="check8" name="option8" value="something" />
                                     <label className="form-check-label" for="check8">ADD MESSAGE ASSETS</label>
                                 </div>
                                 <div className={`tab--content ${isMessageAsset ? 'active' : ''} `}>
@@ -592,7 +599,7 @@ function GoogleAddPreviewDetails() {
                                     <label className="form-check-label" for="check9">SHOW ADVERTISER RATING</label>
                                 </div>
                                 <div className="form-check tab--item mb-3">
-                                    <input type="checkbox" checked = {isSnippetsAsset} onChange={() => setSnippetsAsset(!isSnippetsAsset)} className="form-check-input" id="check10" name="option10" value="something" />
+                                    <input type="checkbox" checked={isSnippetsAsset} onChange={() => setSnippetsAsset(!isSnippetsAsset)} className="form-check-input" id="check10" name="option10" value="something" />
                                     <label className="form-check-label" for="check10">ADD STRUCTURED SNIPPETS ASSET</label>
                                 </div>
                                 <div className={`tab--content ${isSnippetsAsset ? 'active' : ''}`}>
@@ -628,7 +635,7 @@ function GoogleAddPreviewDetails() {
                                 </div>
                             </div>
                             <div className="form--actions">
-                                <button className="btn btn-warning w-100 text-white" onClick = {handleResetForm} type="button">RESET</button>
+                                <button className="btn btn-warning w-100 text-white" onClick={handleResetForm} type="button">RESET</button>
                                 <button onClick={handleSubmit} className="btn btn-success text-white" type="button">SHARE THIS AD</button>
                             </div>
                             {responseTrue &&
@@ -637,6 +644,15 @@ function GoogleAddPreviewDetails() {
                                         <div className="col-12 alert-success p-4">
                                             <h4 className="fs--24">Copy and share the following URL: </h4>
                                             <a className="text-black share--url" target="_blank" href={`/resources/adspreview?id=${responseID}`}>http://{window.location.hostname}/resources/adspreview?id={responseID}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            {loader &&
+                                <div className="share--url p-3 loader--url">
+                                    <div className="row ">
+                                        <div className="col-12 p-4">
+                                            <div id="loader"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -662,9 +678,9 @@ function GoogleAddPreviewDetails() {
                                     </div>
                                     <div id="searchresultsarea" className="search--resut--desktop">
                                         <div className="searchresult">
-                                        <span className="call--add mt-1"><a className="ad--heading"><span className="adtag--ad">Ad&nbsp;·</span>{finalUrl}<Image className='down--arrow' width = {10} height = {6} src="/down-arrow.png" alt="" /> </a> {isCallAsset && <span className="p--title call--asset ms-1">{phoneNumber}</span>}</span>
-                                            {(headlineForm[0] || headlineForm[1] || headlineForm[2] ) &&
-                                            <h2 className="fm--headline mt-2"><span>{headlineForm[0]}</span><span>{headlineForm[1]}</span><span>{headlineForm[2]}</span></h2>
+                                            <span className="call--add mt-1"><a className="ad--heading"><span className="adtag--ad">Ad&nbsp;·</span>{finalUrl}<Image className='down--arrow' width={10} height={6} src="/down-arrow.png" alt="" /> </a> {isCallAsset && <span className="p--title call--asset ms-1">{phoneNumber}</span>}</span>
+                                            {(headlineForm[0] || headlineForm[1] || headlineForm[2]) &&
+                                                <h2 className="fm--headline mt-2"><span>{headlineForm[0]}</span><span>{headlineForm[1]}</span><span>{headlineForm[2]}</span></h2>
                                             }
                                             {advertiserRating &&
                                                 <div className="advertiger--rating">
@@ -814,10 +830,10 @@ function GoogleAddPreviewDetails() {
                                                 </div>
                                                 <div id="searchresultsarea">
                                                     <div className="searchresult">
-                                                    <span className="call--add row ms-1"><a className="ad--heading col-10"><span className="adtag--ad">Ad ·</span>{finalUrl}</a> <span className='col-2 text-center mt-2'><Image className='bell--img' src="/bell.png" width={12}  height={13} alt="" /></span> </span>
-                                                    {(headlineForm[0] || headlineForm[1] || headlineForm[2] ) &&
-                                                        <h2 className="fm--headline mt-1"><span>{headlineForm[0]}</span><span>{headlineForm[1]}</span><span>{headlineForm[2]}</span></h2>
-                                                    }
+                                                        <span className="call--add row ms-1"><a className="ad--heading col-10"><span className="adtag--ad">Ad ·</span>{finalUrl}</a> <span className='col-2 text-center mt-2'><Image className='bell--img' src="/bell.png" width={12} height={13} alt="" /></span> </span>
+                                                        {(headlineForm[0] || headlineForm[1] || headlineForm[2]) &&
+                                                            <h2 className="fm--headline mt-1"><span>{headlineForm[0]}</span><span>{headlineForm[1]}</span><span>{headlineForm[2]}</span></h2>
+                                                        }
                                                         {advertiserRating &&
                                                             <div className="advertiger--rating">
                                                                 <span className="p--title">4</span>
@@ -909,21 +925,21 @@ function GoogleAddPreviewDetails() {
                                                             </div>
                                                         }
 
-                                                     { (isLocationAsset || isCallAsset ) &&
-                                                        <div className="location--wrapper--mb">              
-                                                            <div className="location--and--phone">
-                                                                {isLocationAsset &&
-                                                                    <div className="location--asset">
-                                                                        <Image className='map--img' src="/map--img.png" width={11} height={17} alt="" /> <a href="#">{address}</a>
-                                                                    </div>}
-                                                                {isCallAsset &&
-                                                                    <div className="location--asset">
-                                                                        <Image className='bagage--img phone--img' src="/phone--img.png" width={15} height={16} alt="" /> <span className="p--title call--asset ms-1"> {phoneNumber}</span>
-                                                                    </div>
-                                                                }
+                                                        {(isLocationAsset || isCallAsset) &&
+                                                            <div className="location--wrapper--mb">
+                                                                <div className="location--and--phone">
+                                                                    {isLocationAsset &&
+                                                                        <div className="location--asset">
+                                                                            <Image className='map--img' src="/map--img.png" width={11} height={17} alt="" /> <a href="#">{address}</a>
+                                                                        </div>}
+                                                                    {isCallAsset &&
+                                                                        <div className="location--asset">
+                                                                            <Image className='bagage--img phone--img' src="/phone--img.png" width={15} height={16} alt="" /> <span className="p--title call--asset ms-1"> {phoneNumber}</span>
+                                                                        </div>
+                                                                    }
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                      }
+                                                        }
 
                                                         {isMessageAsset &&
                                                             <div className="mb--message">

@@ -889,3 +889,55 @@ color: #333333 !important;
       font-size: 11px;
   }
 }
+
+
+/* // Loader CSS  */
+
+.loader--url {
+  position:relative
+}
+#loader {
+  position: absolute;
+  z-index: 1;
+  width: 45px;
+  height: 45px;
+  border: 5px solid #dddddd;
+  border-radius: 50%;
+  border-top: 5px solid #999999;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  margin: 0px;
+    left: calc(50% - 20px);
+    transform: translateX(-50%);
+}
+
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
