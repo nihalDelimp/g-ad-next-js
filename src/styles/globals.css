@@ -702,6 +702,10 @@ color: #545454;
     padding-top: 10px;
     overflow-x: auto;
 }
+.ft--10 {
+  font-size: 10px;
+  margin-bottom: 10px;
+}
 .mobile-inner .price--asset::-webkit-scrollbar {
   height: 0px;
 }
@@ -729,9 +733,10 @@ color: #545454;
 .location--and--phone {
   display: flex;
   gap: 13px;
-  overflow: hidden;
+  /* overflow: hidden; */
   overflow-x: auto;
   padding: 7px 0;
+  flex-direction: column;
 }
 .location--and--phone::-webkit-scrollbar {
   height: 0px;
@@ -759,15 +764,35 @@ color: #545454;
   display: flex;
   align-items: center;
   gap: 8px;
-  min-width: 91%;
+  min-width: 100%;
+  position: relative;
+  padding-top: 7px;
+  padding-inline: 10px;
+}
+.location--wrapper--mb {
+  width: calc(100% + 20px);
+    left: -10px;
+    overflow-x: hidden;
+}
+.location--and--phone .location--asset:nth-child(2) {
+  padding: 14px 10px 7px;
+}
+.location--and--phone .location--asset:nth-child(2)::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: -13px;
+  height: 1px;
+  width: calc(100% + 60px);
+  background-color: #eee;
 }
 .location--and--phone .location--asset a {
   color: #545454;
   font-size: 13px;
 }
-.location--asset:first-child {
+/* .location--asset:first-child {
   border-right: 1px solid #dddada;
-}
+} */
 /* .phone--img{
   position: absolute;
 } */
@@ -840,6 +865,15 @@ color: #333333 !important;
 .mobile-inner .advertiger--rating .p--title {
   color: #808080;
 }
+
+@media (max-width:1100px) {
+  .headline--box textarea {
+    min-height: 77px;
+  }
+  .pr--45 {
+    padding-right: 30px;
+}
+}
 @media (max-width:1024px) {
   .pl--45 {
       padding-left: 15px;
@@ -870,8 +904,20 @@ color: #333333 !important;
   .mobile-inner{
     top: 81px;
   }
+  .input-group-text, .form-control, .form-check-label, .tab--content strong {
+    font-size: 12px;
+}
+.input-group-text {
+  padding: 5px 7px;
+}
+.checkbox--form--group {
+  padding: 0 10px;
+}
 }
 @media (max-width:767px) {
+  .headline--box textarea {
+    min-height: 70px;
+}
   .checkbox--form--group {
       padding: 0 0px;
   }
@@ -913,6 +959,9 @@ color: #333333 !important;
   }
   .mobile-inner {
     top: 72px;
+}
+.input-group-text {
+  padding: 5px 5px;
 }
 }
 

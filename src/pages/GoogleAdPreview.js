@@ -46,6 +46,8 @@ function GoogleAdPreview() {
     const maxPriceDescLimit = 30
     const maxPhoneLimit = 15
     const maxSnippetsItemLimit = 25
+    const maxMessageLimit = 35
+    const maxDomainNameLimit = 30
 
 
     const handleChangeHeadLine = (i, event) => {
@@ -242,7 +244,7 @@ function GoogleAdPreview() {
                             </div>
                             <div className="headline--box">
                                 <h3 className="title--sm mb-0">Headlines</h3>
-                                <p>(Use up to 30 characters)</p>
+                                <p className="ft--10">(Use up to 30 characters)</p>
                                 <div className="headline--inputs">
                                     {headlineForm.map((item, i) =>
                                         <div className="input-group mb-2" key={i}>
@@ -255,7 +257,7 @@ function GoogleAdPreview() {
                             </div>
                             <div className="headline--box">
                                 <h3 className="title--sm mb-0">DESCRIPTIONS</h3>
-                                <p>(Use up to 90 characters)</p>
+                                <p className="ft--10">(Use up to 90 characters)</p>
                                 <div className="headline--inputs">
                                     {descriptionForm.map((item, i) =>
                                         <div className="input-group mb-2" key={i}>
@@ -270,11 +272,15 @@ function GoogleAdPreview() {
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" className="form-check-input" checked={isSiteLinkHead} onChange={() => setSiteLinkHead(!isSiteLinkHead)} id="check2" name="option2" value="something" />
                                     <label className="form-check-label" for="check2">ADD SITELINK ASSETS</label>
+                                    <p className="ft--10">(Use up to 25 characters)</p>
+
                                 </div>
                                 <div className={`tab--content ${isSiteLinkHead ? 'active' : ''}  `}>
                                     <div className="form-check tab--item--inner mb-3 pl-60">
                                         <input type="checkbox" className="form-check-input" checked={isSiteLinkDesc} onChange={() => setSiteLinkDesc(!isSiteLinkDesc)} id="check12" name="option12" value="something" />
                                         <label className="form-check-label" for="check12">ADD SITELINK ASSETS</label>
+                                        <p className="ft--10">(Use up to 35 characters)</p>
+
                                     </div>
 
                                     {siteLinkAsset.map((item, i) =>
@@ -301,6 +307,8 @@ function GoogleAdPreview() {
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" checked={isCallout} onChange={() => setCallout(!isCallout)} className="form-check-input" id="check3" name="option3" value="something" />
                                     <label className="form-check-label" for="check3">ADD CALLOUT ASSETS</label>
+                                    <p className="ft--10">(Use up to 25 characters)</p>
+
                                 </div>
                                 <div className={`tab--content ${isCallout ? 'active' : ''}`}>
                                     {calloutAsset.map((item, i) =>
@@ -314,6 +322,7 @@ function GoogleAdPreview() {
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" checked={ispromotion} onChange={() => setPromotion(!ispromotion)} className="form-check-input" id="check4" name="option4" value="something" />
                                     <label className="form-check-label" for="check4">ADD PROMOTIONS ASSET</label>
+                                    <p className="ft--10">(Use up to 25 characters)</p>
                                 </div>
                                 <div className={`tab--content ${ispromotion ? 'active' : ''}`}>
                                     <div className="form-group row mb-3">
@@ -412,7 +421,7 @@ function GoogleAdPreview() {
                                     <div className="input-group mb-3">
                                         <span className="input-group-text">Item</span>
                                         <input type="text" name='automatic_domain_name' onChange={handleChangePromotionsAsset} value={promotionsAsset.automatic_domain_name} className="form-control" placeholder="Automatic Domain Name" />
-                                        <span className="input-group-text alert-success">0</span>
+                                        <span className={`input-group-text ${maxDomainNameLimit - promotionsAsset.automatic_domain_name.length >= 0 ? 'alert-success' : 'alert-danger'} `}>{maxDomainNameLimit - promotionsAsset.automatic_domain_name.length}</span>
                                     </div>
                                     <div className="form-group row mb-3">
                                         <strong className="col-3">Promotion Details</strong>
@@ -445,6 +454,7 @@ function GoogleAdPreview() {
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" checked={isAddPrice} onChange={() => setAddPrice(!isAddPrice)} className="form-check-input" id="check5" name="option5" value="something" />
                                     <label className="form-check-label" for="check5">ADD PRICE ASSET</label>
+                                    <p className="ft--10">(Use up to 30 characters)</p>
                                 </div>
                                 <div className={`tab--content ${isAddPrice ? 'active' : ''}`}>
                                     <div className="form-group row mb-3">
@@ -487,6 +497,7 @@ function GoogleAdPreview() {
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" checked={isCallAsset} onChange={() => setCallAsset(!isCallAsset)} className="form-check-input" id="check6" name="option6" value="something" />
                                     <label className="form-check-label" for="check6">ADD CALL ASSET</label>
+                                    <p className="ft--10">(Use up to 15 characters)</p>
                                 </div>
                                 <div className={`tab--content ${isCallAsset ? 'active' : ''} `}>
                                     <div className="input-group mb-2">
@@ -508,12 +519,13 @@ function GoogleAdPreview() {
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" checked={isMessageAsset} onChange={() => setMessageAsset(!isMessageAsset)} className="form-check-input" id="check8" name="option8" value="something" />
                                     <label className="form-check-label" for="check8">ADD MESSAGE ASSETS</label>
+                                    <p className="ft--10">(Use up to 35 characters)</p>
                                 </div>
                                 <div className={`tab--content ${isMessageAsset ? 'active' : ''} `}>
                                     <div className="input-group mb-2">
                                         <span className="input-group-text">Msg. Ext. Text</span>
                                         <input type="text" name='message' value={message} onChange={(e) => setMessage(e.target.value)} className="form-control" placeholder="Got Questions? Send Us a Text!" />
-                                        <span className="input-group-text alert-success">5</span>
+                                        <span className={`input-group-text ${maxMessageLimit - message.length >= 0 ? 'alert-success' : 'alert-danger'} `}>{maxMessageLimit - message.length}</span>
                                     </div>
                                 </div>
                                 <div className="form-check tab--item mb-3">
@@ -523,6 +535,7 @@ function GoogleAdPreview() {
                                 <div className="form-check tab--item mb-3">
                                     <input type="checkbox" checked={isSnippetsAsset} onChange={() => setSnippetsAsset(!isSnippetsAsset)} className="form-check-input" id="check10" name="option10" value="something" />
                                     <label className="form-check-label" for="check10">ADD STRUCTURED SNIPPETS ASSET</label>
+                                    <p className="ft--10">(Use up to 25 characters)</p>
                                 </div>
                                 <div className={`tab--content ${isSnippetsAsset ? 'active' : ''}`}>
                                     <div className="form-group row mb-3">
