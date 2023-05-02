@@ -250,7 +250,7 @@ function GoogleAddPreviewDetails() {
 
     const handleResetForm = () => {
         setHeadlineForm(['Google Ads Preview Tool', 'Explore New Campaign Ideas', 'Master Google Ads Writing'])
-        setDescriptionForm(['Google Ads Preview Tool', 'Explore New Campaign Ideas', 'Master Google Ads Writing'])
+        setDescriptionForm(['Work through new ad ideas and see a preview of how it would look if your ad was live.', 'Easily share your ad with others or keep a copy for yourself with the link below.'])
         setSiteLinkAsset([
             { headline: '', description_1: '', description_2: '' },
             { headline: '', description_1: '', description_2: '' },
