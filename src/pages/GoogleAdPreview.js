@@ -150,9 +150,9 @@ function GoogleAdPreview() {
         })
             .then(response => {
                 setLoader(false)
-                 return response.json();
+                return response.json();
             })
-             .then(data => {
+            .then(data => {
                 console.log(data, "nihal")
                 if (data.id) {
                     // toast.success('Ads Saved');
@@ -574,7 +574,7 @@ function GoogleAdPreview() {
                                 <div className="share--url p-3 loader--url">
                                     <div className="row ">
                                         <div className="col-12 p-4">
-                                        <div id="loader"></div>
+                                            <div id="loader"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -857,7 +857,7 @@ function GoogleAdPreview() {
                                                                         </div>}
                                                                     {isCallAsset &&
                                                                         <div className="location--asset">
-                                                                            <Image className='bagage--img phone--img' src="/phone--img.png" width={15} height={16} alt="" /> <span className="p--title call--asset ms-1"> {phoneNumber}</span>
+                                                                            <Image className='bagage--img phone--img' src="/phone--img.png" width={15} height={16} alt="" /> <span className="p--title call--asset ms-1">Call {phoneNumber}</span>
                                                                         </div>
                                                                     }
                                                                 </div>
