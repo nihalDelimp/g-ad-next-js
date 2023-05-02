@@ -511,7 +511,7 @@ padding-left: 15px;
   -webkit-box-shadow: 0 0 5px 2px rgba(216,216,217,1);
   box-shadow: 0 0 5px 2px rgba(216,216,217,1);
   border-radius: 7px;
-  padding: 15px;
+  padding: 15px 10px;
   margin-top: 15px;
 }
 .mobile-inner {
@@ -596,9 +596,7 @@ padding-left: 15px;
 .mobile-sec .searchresult h2.fm--headline {
   color: #1967d2;
   font-size: 16px;
-  display: flex;
-  flex-wrap: wrap;
-  row-gap: 2px;
+  
 }
 .pl--45 {
   padding-left: 45px;
@@ -680,24 +678,30 @@ color: #545454;
   gap: 5px;
   overflow: hidden;
   padding: 12px 10px;
+  margin-right: 0px;
 }
 .mobile-inner .price--asset .header--price--asset {
-  width: 100px;
-  min-width: 100px;
-  padding: 5px;
+  width: 118px;
+  min-width: 118px;
+  padding: 3px 5px 5px;
 } 
 .mobile-inner .price--asset .hd--text {
   margin-bottom: 2px;
 }
 .mobile-inner .price--asset {
   overflow: hidden;
+  background-color: #f8f8f8;
+    margin-left: -10px;
+    padding-left: 13px;
+    width: calc(100% + 20px);
+    padding-top: 10px;
 }
 .mobile-inner .getpromoline {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 7px;
   position: relative;
-  padding: 5px 0;
+  padding: 7px 0;
 }
 .mobile-inner .getpromoline::before {
   content: "";
@@ -715,10 +719,10 @@ color: #545454;
 }
 .location--and--phone {
   display: flex;
-  gap: 10px;
+  gap: 13px;
   overflow: hidden;
   
-  padding: 5px 0;
+  padding: 7px 0;
 }
 .location--wrapper--mb {
   position: relative;
@@ -743,7 +747,7 @@ color: #545454;
   display: flex;
   align-items: center;
   gap: 8px;
-  min-width: 87%;
+  min-width: 91%;
 }
 .location--and--phone .location--asset a {
   color: #545454;
@@ -763,16 +767,16 @@ color: #545454;
   margin-top: 10px;
 }
 .mobile-inner .search-result {
-  padding-top: 50px;
+  padding-top: 5px;
 }
 .mobile-inner {
-  height: calc(100% - 130px);
+  height: calc(100% - 197px);
   overflow: hidden auto;
   border-radius: 30px;
   position: relative;
-  top: 60px;
+  top: 99px;
   padding: 10px 10px;
-  max-width: 87%;
+  max-width: calc(91% + 5px);
 }
 .mobile-inner::-webkit-scrollbar {
   width: 3px;
@@ -810,12 +814,19 @@ color: #333333 !important;
   position: relative;
   top: 2px;
   margin: 0 3px;
+  transform: scaleY(0.9);
 }
 .bagage--img {
   width: 15px;
 }
 .map--img{
   width: 11px;
+}
+.mobile-inner .searchresult h2.fm--headline {
+  line-height: 22px;
+}
+.mobile-inner .advertiger--rating .p--title {
+  color: #808080;
 }
 @media (max-width:1024px) {
   .pl--45 {
@@ -839,13 +850,13 @@ color: #333333 !important;
       padding-right: 0px;
   }
   .mobile-inner {
-      height: calc(100% - 200px);
+      height: calc(100% - 189px);
   }
   .mobile-inner .search-result {
       padding-top: 10px;
   }
   .mobile-inner{
-    top: 82px;
+    top: 81px;
   }
 }
 @media (max-width:767px) {
@@ -883,11 +894,14 @@ color: #333333 !important;
       height: 615px;
   } 
   .mobile-inner {
-      max-width: 85%;
+    max-width: calc(91% + 2px);
   }
   .mob-captions {
       font-size: 11px;
   }
+  .mobile-inner {
+    top: 72px;
+}
 }
 
 
