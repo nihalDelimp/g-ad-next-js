@@ -569,7 +569,7 @@ function GoogleAddPreviewDetails() {
                                 <div className={`tab--content ${isCallAsset ? 'active' : ''} `}>
                                     <div className="input-group mb-2">
                                         <span className="input-group-text">Phone Number</span>
-                                        <input type="number" name="phoneNumber" onChange={(e) => setPhoneNumber(e.target.value)} className="form-control" placeholder="8001234567" />
+                                        <input type="number" name="phoneNumber" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} className="form-control" placeholder="8001234567" />
                                         <span className={`input-group-text ${maxPhoneLimit - phoneNumber.length >= 0 ? 'alert-success' : 'alert-danger'} `}>{maxPhoneLimit - phoneNumber.length}</span>
                                     </div>
                                 </div>

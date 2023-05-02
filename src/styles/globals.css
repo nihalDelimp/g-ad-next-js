@@ -772,7 +772,7 @@ color: #545454;
 .mobile-inner {
   height: calc(100% - 197px);
   overflow: hidden auto;
-  border-radius: 30px;
+  border-radius: 15px;
   position: relative;
   top: 99px;
   padding: 10px 10px;
