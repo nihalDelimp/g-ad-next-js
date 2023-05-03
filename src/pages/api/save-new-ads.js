@@ -24,6 +24,7 @@ export default async function handler(req, res) {
             advertiser_rating: req.body.advertiser_rating,
             structured_snippets: req.body.structured_snippets,
             generatedID: adId,
+            email: req.body.email,
             isSiteLinkHead: req.body.isSiteLinkHead,
             isSiteLinkDesc: req.body.isSiteLinkDesc,
             isCallout: req.body.isCallout,

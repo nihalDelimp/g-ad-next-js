@@ -59,6 +59,7 @@ const adSchema = new Schema({
     isLocationAsset: { type: Boolean, default: false },
     isMessageAsset: { type: Boolean, default: false },
     isSnippetsAsset: { type: Boolean, default: false },
+    email:String
 });
 
 let Ad;

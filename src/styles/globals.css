@@ -914,6 +914,20 @@ color: #333333 !important;
   padding: 0 10px;
 }
 }
+.cs--modal {
+  background-color: rgba(000,000,000,0.3);
+}
+.cs--modal button.close {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  border: none;
+}
+.cs--modal input.form-control {
+  min-height: 44px;
+  border-radius: 18px;
+}
 @media (max-width:767px) {
   .headline--box textarea {
     min-height: 70px;

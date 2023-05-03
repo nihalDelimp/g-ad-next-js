@@ -4,6 +4,8 @@ import $ from 'jquery';
 import Image from 'next/image';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
+import ShareEmailModal from '../ShareEmailModal';
+
 
 function GoogleAddPreviewDetails() {
     const router = useRouter();
@@ -36,6 +38,8 @@ function GoogleAddPreviewDetails() {
     const [isSnippetsAsset, setSnippetsAsset] = useState(false)
     const [responseID, setResponseId] = useState("")
     const [loader, setLoader] = useState(false)
+    const [modal , setModal] = useState(false)
+
 
 
 
@@ -197,7 +201,7 @@ function GoogleAddPreviewDetails() {
         setSnippetsItems(newInputValues)
     }
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (email_id) => {
         const payload = {
             final_url: finalUrl,
             headlines: headlineForm,
@@ -211,6 +215,7 @@ function GoogleAddPreviewDetails() {
             message: message,
             advertiser_rating: advertiserRating,
             structured_snippets: { ...structuredSnippets, snippetsItems },
+            email : email_id,
             isSiteLinkHead,
             isSiteLinkDesc,
             isCallout,
@@ -236,9 +241,9 @@ function GoogleAddPreviewDetails() {
             })
             .then(data => {
                 if (data.id) {
-                    // toast.success('Ads Saved');
                     setresponseTrue(true)
                     setResponseId(data.id)
+                    setModal(false)
                 } else {
                     toast.error(data.message);
                 }
@@ -293,6 +298,10 @@ function GoogleAddPreviewDetails() {
         setSnippetsAsset(false)
         setresponseTrue(false)
         setResponseId("")
+    }
+
+    const shareWithEmailaddress = (email_id) => {
+        handleSubmit(email_id)
     }
 
     return (
@@ -649,7 +658,7 @@ function GoogleAddPreviewDetails() {
                         </div>
                         <div className="form--actions">
                             <button className="btn btn-warning w-100 text-white" onClick={handleResetForm} type="button">RESET</button>
-                            <button onClick={handleSubmit} className="btn btn-success text-white" type="button">SHARE THIS AD</button>
+                            <button onClick={() => setModal(true)} className="btn btn-success text-white" type="button">SHARE THIS AD</button>
                         </div>
                         {responseTrue &&
                             <div className="share--url p-3">
@@ -969,6 +978,13 @@ function GoogleAddPreviewDetails() {
                 </div>
             </div>
         </section >
+        {modal &&
+            <ShareEmailModal
+            modal = {modal}
+            closeModal = {() => setModal(false)}
+            shareWithEmailaddress = {shareWithEmailaddress}
+            />
+            }
     </>
     )
 }

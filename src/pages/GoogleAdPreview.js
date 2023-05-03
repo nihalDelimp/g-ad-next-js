@@ -3,6 +3,8 @@ import Script from 'next/script';
 import $ from 'jquery';
 import Image from 'next/image';
 import { toast } from 'react-toastify';
+import ShareEmailModal from './ShareEmailModal';
+
 
 
 function GoogleAdPreview() {
@@ -34,6 +36,7 @@ function GoogleAdPreview() {
     const [isSnippetsAsset, setSnippetsAsset] = useState(false)
     const [responseID, setResponseId] = useState("")
     const [loader, setLoader] = useState(false)
+    const [modal , setModal] = useState(false)
 
 
 
@@ -116,7 +119,7 @@ function GoogleAdPreview() {
         setSnippetsItems(newInputValues)
     }
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (email_id) => {
         const payload = {
             final_url: finalUrl,
             headlines: headlineForm,
@@ -130,6 +133,7 @@ function GoogleAdPreview() {
             message: message,
             advertiser_rating: advertiserRating,
             structured_snippets: { ...structuredSnippets, snippetsItems },
+            email : email_id,
             isSiteLinkHead,
             isSiteLinkDesc,
             isCallout,
@@ -140,7 +144,6 @@ function GoogleAdPreview() {
             isMessageAsset,
             isSnippetsAsset,
         };
-        console.log(payload, "Payload")
         setresponseTrue(false)
         setLoader(true)
         fetch('/api/save-new-ads', {
@@ -157,9 +160,9 @@ function GoogleAdPreview() {
             .then(data => {
                 console.log(data, "nihal")
                 if (data.id) {
-                    // toast.success('Ads Saved');
                     setresponseTrue(true)
                     setResponseId(data.id)
+                    setModal(false)
                 } else {
 
                     toast.error(data.message);
@@ -215,6 +218,10 @@ function GoogleAdPreview() {
         setSnippetsAsset(false)
         setresponseTrue(false)
         setResponseId("")
+    }
+
+    const shareWithEmailaddress = (email_id) => {
+        handleSubmit(email_id)
     }
 
     return (
@@ -571,7 +578,7 @@ function GoogleAdPreview() {
                             </div>
                             <div className="form--actions">
                                 <button className="btn btn-warning w-100 text-white" onClick={handleResetForm} type="button">RESET</button>
-                                <button onClick={handleSubmit} className="btn btn-success text-white" type="button">SHARE THIS AD</button>
+                                <button onClick={() => setModal(true)} className="btn btn-success text-white" type="button">SHARE THIS AD</button>
                             </div>
                             {responseTrue &&
                                 <div className="share--url p-3">
@@ -892,6 +899,13 @@ function GoogleAdPreview() {
                     </div>
                 </div>
             </section >
+            {modal &&
+            <ShareEmailModal
+            modal = {modal}
+            closeModal = {() => setModal(false)}
+            shareWithEmailaddress = {shareWithEmailaddress}
+            />
+            }
         </>
     )
 }
