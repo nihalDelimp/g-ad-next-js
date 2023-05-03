@@ -356,7 +356,7 @@ function GoogleAddPreviewDetails() {
                             <div className={`tab--content ${isSiteLinkHead ? 'active' : ''}  `}>
                                 <div className="form-check tab--item--inner mb-3 pl-60">
                                     <input type="checkbox" className="form-check-input" checked={isSiteLinkDesc} onChange={() => setSiteLinkDesc(!isSiteLinkDesc)} id="check12" name="option12" value="something" />
-                                    <label className="form-check-label" for="check12">ADD SITELINK ASSETS</label>
+                                    <label className="form-check-label" for="check12">ADD SITELINK DESCRIPTIONS</label>
                                     <p className="ft--10">(Use up to 35 characters)</p>
 
                                 </div>
@@ -697,9 +697,9 @@ function GoogleAddPreviewDetails() {
                                         }
                                         {advertiserRating &&
                                             <div className="advertiger--rating">
-                                                <span className="p--title">4</span>
+                                                <span className="p--title">5</span>
                                                 <span className="advertiger--rating--span">
-                                                    <Image className='star--img' src="/star--new.png" width={67} height={14} alt="" />
+                                                    <Image className='star--img' src="/star--new2.png" width={67} height={14} alt="" />
                                                 </span>
                                                 <span className="p--title">advertiser rating</span>
                                             </div>
@@ -849,9 +849,9 @@ function GoogleAddPreviewDetails() {
                                                     }
                                                     {advertiserRating &&
                                                         <div className="advertiger--rating">
-                                                            <span className="p--title">4</span>
+                                                            <span className="p--title">5</span>
                                                             <span className="advertiger--rating--span">
-                                                                <Image className='star--img' src="/star--new.png" width={67} height={14} alt="" />
+                                                                <Image className='star--img' src="/star--new2.png" width={67} height={14} alt="" />
                                                             </span>
                                                             <span className="p--title">advertiser rating</span>
                                                         </div>
