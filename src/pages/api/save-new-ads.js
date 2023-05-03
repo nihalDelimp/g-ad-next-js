@@ -8,7 +8,7 @@ sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 async function sendEmail(url, email) {
     try {
         await sendgrid.send({
-            to: "pankaj@delimp.com", //postmagnetmedia@gmail.com
+            to: "postmagnetmedia@gmail.com", //postmagnetmedia@gmail.com
             from: "nihal@delimp.com",
             subject: "Here's some new ads has been created",
             html: `<!DOCTYPE html>
